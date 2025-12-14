@@ -10,29 +10,24 @@
     <title>Ahmed Mohamed Salah Amer - Civil Engineer</title>
     
     <style>
-        /* RESTORED FONTS: Tajawal (Arabic) & Roboto (English) */
+        /* FONTS */
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Roboto:wght@300;400;500;700&display=swap');
 
         :root {
-            /* PALETTE */
             --primary-color: #1e2a38; 
             --secondary-color: #4682b4; 
-            --accent-color: #4682b4;
-            
             --text-color: #2c3e50;
             --text-light: #555;
             --bg-color: #f5f5f5;
             --container-bg: #fff;
             --border-color: #e0e0e0;
-            --shadow: rgba(0,0,0,0.08);
             --header-border: #1e2a38;
         }
 
-        /* Dark Theme Variables */
+        /* Dark Theme */
         [data-theme="dark"] {
             --primary-color: #90caf9;
             --secondary-color: #64b5f6;
-            --accent-color: #64b5f6;
             --text-color: #e0e0e0;
             --text-light: #bbbbbb;
             --bg-color: #121212;
@@ -52,223 +47,134 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Main Container --- */
         .cv-container {
             max-width: 210mm;
             width: 100%;
             background: var(--container-bg);
             padding: 50px 60px;
-            box-shadow: 0 0 25px var(--shadow);
+            box-shadow: 0 0 25px rgba(0,0,0,0.08);
             border-top: 6px solid var(--header-border);
             position: relative;
             margin-bottom: 50px;
         }
 
-        /* --- Floating Controls --- */
-        .controls {
-            position: fixed;
-            top: 20px; left: 20px; z-index: 1000;
-            display: flex; gap: 10px;
-        }
-
+        /* Controls & Buttons */
+        .controls { position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 10px; }
         .btn-float {
-            background-color: var(--primary-color);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            display: flex; align-items: center; gap: 8px;
-            font-size: 14px;
+            background-color: var(--primary-color); color: #fff; border: none;
+            padding: 10px 20px; border-radius: 30px; cursor: pointer;
+            font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 14px;
         }
         .theme-btn {
-            background-color: var(--container-bg);
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            padding: 10px; width: 42px; height: 42px;
-            justify-content: center;
+            background-color: var(--container-bg); color: var(--primary-color);
+            border: 2px solid --primary-color; padding: 10px; width: 42px; justify-content: center;
         }
 
-        /* --- TYPOGRAPHY --- */
-        .cv-ar { font-family: 'Tajawal', sans-serif; line-height: 1.8; }
-        .cv-en { font-family: 'Roboto', sans-serif; line-height: 1.7; display: none; }
+        /* Typography Defaults */
+        .cv-ar { font-family: 'Tajawal', sans-serif; line-height: 1.6; }
+        .cv-en { font-family: 'Roboto', sans-serif; line-height: 1.5; display: none; }
 
-        header { text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px; }
-        
-        h1 { 
-            color: var(--primary-color); 
-            margin: 0 0 10px 0; 
-            font-size: 36px; 
-            text-transform: uppercase; 
-            font-weight: 800; 
-        }
-        
-        .job-role { 
-            font-size: 22px; 
-            color: var(--secondary-color); 
-            font-weight: 700; 
-            margin-bottom: 15px; 
-            display: block; 
-        }
-        
-        .contact-info { 
-            font-size: 16px; 
-            color: var(--text-light); 
-            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; 
-            font-weight: 500;
-        }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        h1 { color: var(--primary-color); margin: 0 0 5px; font-size: 32px; font-weight: 800; text-transform: uppercase; }
+        .job-role { font-size: 20px; color: var(--secondary-color); font-weight: 700; display: block; margin-bottom: 10px; }
+        .contact-info { font-size: 14px; color: var(--text-light); display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-weight: 500; }
         .contact-info a { text-decoration: none; color: inherit; }
-        .contact-info i { color: var(--primary-color); margin: 0 5px; }
-
-        .section { margin-bottom: 40px; }
         
+        .section { margin-bottom: 30px; }
         h2 { 
-            color: var(--primary-color); 
-            font-size: 24px; 
-            border-bottom: 2px solid var(--primary-color); 
-            padding-bottom: 8px; 
-            margin-bottom: 20px; 
-            display: flex; align-items: center; 
-            text-transform: uppercase; 
-            font-weight: 800; 
+            color: var(--primary-color); font-size: 22px; 
+            border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; margin-bottom: 15px; 
+            display: flex; align-items: center; font-weight: 800; text-transform: uppercase;
         }
-        h2 i { color: var(--secondary-color); font-size: 22px; margin: 0 10px; }
+        h2 i { color: var(--secondary-color); margin: 0 10px; font-size: 20px; }
         
-        p { 
-            margin-bottom: 15px; 
-            text-align: justify; 
-            font-size: 18px; 
-            color: var(--text-color);
-            font-weight: 500; 
-        }
+        p { margin-bottom: 10px; text-align: justify; font-size: 16px; font-weight: 500; }
 
-        .item { margin-bottom: 25px; }
-        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
-        .item-title { font-size: 20px; font-weight: 700; color: var(--text-color); }
-        
-        .date-badge { 
-            font-size: 14px; 
-            font-weight: 700; color: #fff; 
-            background-color: var(--primary-color); 
-            padding: 4px 12px; border-radius: 6px; 
-        }
+        .item { margin-bottom: 20px; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+        .item-title { font-size: 18px; font-weight: 700; }
+        .date-badge { font-size: 12px; background-color: var(--primary-color); color: #fff; padding: 3px 10px; border-radius: 4px; }
+        .institution { font-size: 16px; font-weight: 600; color: var(--secondary-color); }
 
-        .institution { font-size: 18px; font-weight: 600; color: var(--secondary-color); }
-        .details { margin-top: 5px; font-size: 17px; color: var(--text-color); font-weight: 500; }
+        ul { margin: 0; list-style: none; padding: 0; }
+        li { position: relative; margin-bottom: 8px; font-size: 16px; }
+        .cv-ar ul { padding-right: 15px; } .cv-ar li::before { content: "▪"; position: absolute; right: -15px; color: var(--secondary-color); }
+        .cv-en ul { padding-left: 15px; } .cv-en li::before { content: "▪"; position: absolute; left: -15px; color: var(--secondary-color); }
 
-        /* Lists */
-        ul { margin: 0; list-style: none; }
-        li { position: relative; margin-bottom: 12px; font-size: 18px; color: var(--text-color); font-weight: 500; }
-        
-        .cv-ar ul { padding-right: 25px; }
-        .cv-ar ul li::before { content: "▪"; color: var(--secondary-color); position: absolute; right: -20px; font-size: 18px; }
-        
-        .cv-en ul { padding-left: 25px; }
-        .cv-en ul li::before { content: "▪"; color: var(--secondary-color); position: absolute; left: -20px; font-size: 18px; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .grid-col h3 { font-size: 18px; color: var(--secondary-color); margin-bottom: 10px; border-bottom: 1px dotted var(--border-color); }
 
-        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .grid-col h3 { 
-            font-size: 20px; 
-            color: var(--secondary-color); 
-            margin-bottom: 15px; 
-            border-bottom: 1px dotted var(--border-color); 
-            font-weight: 700; 
+        /* Footer */
+        .footer-actions { margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 20px; display: flex; justify-content: center; gap: 15px; }
+        .footer-btn { 
+            display: inline-flex; align-items: center; gap: 8px; text-decoration: none; 
+            background: var(--bg-color); color: var(--primary-color); padding: 12px 25px; 
+            border-radius: 6px; border: 1px solid var(--border-color); font-weight: 700; cursor: pointer;
         }
-
-        /* Footer Actions */
-        .footer-actions {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            text-decoration: none;
-            background-color: var(--bg-color);
-            color: var(--primary-color);
-            padding: 14px 35px;
-            border-radius: 8px;
-            font-weight: 700;
-            border: 2px solid var(--border-color);
-            transition: all 0.2s ease;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .footer-btn:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
-        .footer-btn.primary {
-            background-color: var(--secondary-color);
-            color: #fff;
-            border-color: var(--secondary-color);
-        }
-        .footer-btn.primary:hover {
-            background-color: #2980b9;
-        }
+        .footer-btn.primary { background: var(--secondary-color); color: #fff; border-color: var(--secondary-color); }
 
         /* Responsive */
         @media (max-width: 600px) {
             .grid-container { grid-template-columns: 1fr; }
             .cv-container { padding: 30px 20px; }
             .item-header { flex-direction: column; gap: 5px; }
-            .controls { top: 10px; left: 10px; flex-direction: column; }
+            .controls { flex-direction: column; }
         }
 
-        /* --- MOBILE PRINT OPTIMIZATION --- */
+        /* --- AGGRESSIVE PRINT SETTINGS --- */
         @media print {
+            /* 1. Reset Page */
             @page {
                 size: A4;
-                margin: 0; /* Let body handle margins */
+                margin: 10mm; /* Fixed margins for the paper */
             }
-            
+
+            /* 2. Reset Body */
             html, body {
                 width: 210mm;
                 height: 100%;
                 margin: 0 !important;
                 padding: 0 !important;
                 background: white;
+                /* CRITICAL: Stop Mobile Inflation */
+                -webkit-text-size-adjust: none; 
+                text-size-adjust: none;
             }
 
-            .cv-container { 
-                box-shadow: none; 
-                border: none; 
-                margin: 0 auto !important; 
-                width: 100% !important; 
-                max-width: 100% !important; 
-                padding: 15mm !important; /* REDUCED PADDING FOR MOBILE */
+            /* 3. Container Full Width */
+            .cv-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
             }
 
-            .controls, .footer-actions { display: none !important; }
+            /* 4. Hide UI */
+            .controls, .footer-actions, button { display: none !important; }
+
+            /* 5. Force Font Sizes (pt units are physical, px are pixels) */
+            h1 { font-size: 24pt !important; margin-bottom: 5pt; }
+            .job-role { font-size: 14pt !important; margin-bottom: 10pt; }
+            h2 { font-size: 16pt !important; margin-top: 15pt; border-bottom-width: 1pt; }
+            .item-title { font-size: 13pt !important; }
+            p, li, .institution { font-size: 11pt !important; line-height: 1.4; }
+            .date-badge { font-size: 9pt !important; padding: 2pt 6pt; border: 1px solid #000; color: #000 !important; }
             
-            /* FORCE BLACK & WHITE */
-            body { -webkit-print-color-adjust: exact; }
-            a { text-decoration: none; color: #000 !important; }
-            
-            /* ANTI-SPLIT LOGIC */
-            .item, li, h2, p {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
+            /* 6. Colors to Black */
+            body { -webkit-print-color-adjust: exact; color: #000; }
+            a { color: #000 !important; text-decoration: none; }
 
-            /* FORCE PAGE BREAK FOR 2ND ITEM (If needed) */
-            .print-break { 
-                page-break-before: always; 
-                break-before: page;
-                margin-top: 20px; 
+            /* 7. Anti-Split Logic */
+            .item, li, p { page-break-inside: avoid; break-inside: avoid; }
+
+            /* 8. FORCE PAGE BREAK (Double Command) */
+            .print-break {
+                page-break-before: always !important; /* Old Browsers */
+                break-before: page !important;        /* New Browsers */
+                margin-top: 20pt;
                 display: block;
-            }
-
-            /* MOBILE SCALING FIX */
-            body {
-                zoom: 92%; /* Shrinks content slightly to fit mobile A4 renderer */
             }
         }
     </style>
@@ -335,7 +241,7 @@
                     </ul>
                 </div>
 
-                <!-- Print Break for Arabic -->
+                <!-- Print Break applied here -->
                 <div class="item print-break">
                     <div class="item-header">
                         <span class="item-title">شركة القناة لتوزيع الكهرباء</span>
@@ -420,7 +326,7 @@
                     </ul>
                 </div>
 
-                <!-- Print Break for English -->
+                <!-- Print Break applied here -->
                 <div class="item print-break">
                     <div class="item-header">
                         <span class="item-title">Canal Electricity Distribution Company</span>
@@ -512,11 +418,6 @@
                 html.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
             }
-        }
-
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
 </body>
