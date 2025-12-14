@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Identity -->
+    <meta property="og:title" content="Ahmed Amer | Civil Engineer">
+    <meta property="og:image" content="profile.jpg">
+    <title>Ahmed Amer | Contact</title>
+    
+    <!-- Fonts: Using Cairo (Large & Clear) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* COLOR PALETTE */
+            --primary-color: #1e2a38; /* Navy */
+            --accent-color: #4682b4;  /* Steel Blue */
+            --bg-color: #f0f4f8;      
+            --card-bg: #ffffff;
+            --text-main: #1a2a3a;
+            --text-sub: #666; /* Grey for Bio */
+            --btn-bg: #ffffff;
+            --btn-border: #eee;
+            --shadow: rgba(0,0,0,0.1);
+        }
+
+        /* Dark Theme */
+        [data-theme="dark"] {
+            --primary-color: #90caf9;
+            --accent-color: #64b5f6;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-sub: #bbbbbb;
+            --btn-bg: #2d2d2d;
+            --btn-border: #333;
+            --shadow: rgba(0,0,0,0.5);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--text-sub) 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- THE BIG CARD --- */
+        .card-container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 380px; /* Wide Width */
+            padding: 50px 30px; /* Spacious Padding */
+            border-radius: 25px;
+            box-shadow: 0 15px 35px var(--shadow);
+            text-align: center;
+            border-top: 6px solid var(--accent-color);
+            position: relative;
+        }
+
+        /* Profile Image */
+        .profile-wrapper {
+            width: 160px; /* Large Size */
+            height: 160px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            padding: 5px;
+            background: var(--card-bg);
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+        .profile-img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            color: var(--primary-color);
+            font-size: 28px; /* Big & Bold */
+            margin: 0 0 10px;
+            font-weight: 800;
+        }
+
+        /* Blue Title */
+        .job-title {
+            color: var(--accent-color);
+            font-size: 18px;
+            margin: 0 0 10px; /* Reduced margin to fit Bio */
+            font-weight: 700;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* RESTORED BIO TEXT */
+        .bio-text {
+            color: var(--text-sub);
+            font-size: 16px; /* Readable Size */
+            margin: 0 0 35px; /* Space before buttons */
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        /* BUTTONS */
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--btn-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 16px; /* Big Padding */
+            border-radius: 12px;
+            border: 2px solid var(--btn-border);
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .link-btn:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .link-btn.primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+        .link-btn.primary:hover { opacity: 0.95; }
+
+        .link-btn i { font-size: 20px; }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 20px; left: 20px;
+            background: var(--card-bg);
+            border: 2px solid var(--btn-border);
+            color: var(--text-main);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <div class="card-container">
+        
+        <div class="profile-wrapper">
+            <img src="profile.jpg" alt="Ahmed Amer" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+        </div>
+
+        <h1>أحمد محمد صلاح عامر</h1>
+        
+        <span class="job-title">Civil Engineer | Junior Site Engineer</span>
+
+        <!-- RESTORED BIO -->
+        <p class="bio-text">
+            Civil Engineering Graduate (Zagazig University '24).
+        </p>
+
+        <div class="links-group">
+            <a href="cv.html" class="link-btn primary">
+                <i class="fas fa-file-alt"></i> CV
+            </a>
+
+            <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank" class="link-btn">
+                <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
+            </a>
+
+            <a href="https://wa.me/201012489813" target="_blank" class="link-btn">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp
+            </a>
+
+            <a href="mailto:engahmedmohammed00@gmail.com" class="link-btn">
+                <i class="fas fa-envelope" style="color: #ea4335;"></i> Email Me
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-moon'; 
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = 'fas fa-sun'; 
+            }
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('theme-icon').className = 'fas fa-sun';
+        }
+    </script>
+</body>
+</html>
