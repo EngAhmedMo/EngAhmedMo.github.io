@@ -3,202 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Amer - CV</title>
+    
+    <meta property="og:title" content="Ahmed Amer - CV">
     <link rel="icon" type="image/jpg" href="profile.jpg">
     
+    <title>Ahmed Mohamed Salah Amer - Civil Engineer</title>
+    
     <style>
-        /* Base Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Roboto:wght@400;700&display=swap');
+        /* RESTORED FONTS: Tajawal (Arabic) & Roboto (English) */
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+        /* RESET & BASICS */
+        * { box-sizing: border-box; }
 
         :root {
-            --primary: #1e2a38;
-            --accent: #4682b4;
-            --bg: #f5f5f5;
-            --text: #333;
+            /* PALETTE */
+            --primary-color: #1e2a38; 
+            --secondary-color: #4682b4; 
+            --accent-color: #4682b4;
+            
+            --text-color: #2c3e50;
+            --text-light: #555;
+            --bg-color: #f5f5f5;
+            --container-bg: #fff;
+            --border-color: #e0e0e0;
+            --shadow: rgba(0,0,0,0.08);
+            --header-border: #1e2a38;
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --primary-color: #90caf9;
+            --secondary-color: #64b5f6;
+            --accent-color: #64b5f6;
+            --text-color: #e0e0e0;
+            --text-light: #bbbbbb;
+            --bg-color: #121212;
+            --container-bg: #1e1e1e;
+            --border-color: #333;
+            --header-border: #90caf9;
         }
 
         body {
-            margin: 0; padding: 40px 20px;
-            background: var(--bg); font-family: 'Tajawal', sans-serif;
-            display: flex; justify-content: center;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* --- Main Container --- */
         .cv-container {
-            background: #fff; width: 100%; max-width: 210mm;
-            padding: 40px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--primary);
+            max-width: 210mm;
+            width: 100%;
+            background: var(--container-bg);
+            padding: 50px 60px;
+            box-shadow: 0 0 25px var(--shadow);
+            border-top: 6px solid var(--header-border);
+            position: relative;
+            margin-bottom: 50px;
         }
 
-        /* --- CONTROLS --- */
-        .controls { position: fixed; top: 20px; left: 20px; display: flex; gap: 10px; }
-        .btn { background: var(--primary); color: #fff; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        /* --- Floating Controls --- */
+        .controls {
+            position: fixed;
+            top: 20px; left: 20px; z-index: 1000;
+            display: flex; gap: 10px;
+        }
 
-        /* --- CLASSIC ARABIC STYLING (Reverted to Original) --- */
-        .cv-ar h1 { color: var(--primary); font-size: 28px; margin: 0 0 5px; }
-        .cv-ar .role { color: var(--accent); font-size: 18px; font-weight: bold; margin-bottom: 15px; display: block; }
+        .btn-float {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: flex; align-items: center; gap: 8px;
+            font-size: 14px;
+        }
+        .theme-btn {
+            background-color: var(--container-bg);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px; width: 42px; height: 42px;
+            justify-content: center;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        .cv-ar { font-family: 'Tajawal', sans-serif; line-height: 1.8; }
+        .cv-en { font-family: 'Roboto', sans-serif; line-height: 1.7; display: none; }
+
+        header { text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px; }
         
-        .cv-ar h2 { 
-            border-bottom: 2px solid var(--primary); 
-            color: var(--primary); font-size: 20px; margin-top: 30px; padding-bottom: 5px; 
+        h1 { 
+            color: var(--primary-color); 
+            margin: 0 0 10px 0; 
+            font-size: 36px; 
+            text-transform: uppercase; 
+            font-weight: 800; 
+        }
+        
+        .job-role { 
+            font-size: 22px; 
+            color: var(--secondary-color); 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            display: block; 
+        }
+        
+        .contact-info { 
+            font-size: 16px; 
+            color: var(--text-light); 
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; 
+            font-weight: 500;
+        }
+        .contact-info a { text-decoration: none; color: inherit; }
+        .contact-info i { color: var(--primary-color); margin: 0 5px; }
+
+        .section { margin-bottom: 40px; }
+        
+        h2 { 
+            color: var(--primary-color); 
+            font-size: 24px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 8px; 
+            margin-bottom: 20px; 
+            display: flex; align-items: center; 
+            text-transform: uppercase; 
+            font-weight: 800; 
+        }
+        h2 i { color: var(--secondary-color); font-size: 22px; margin: 0 10px; }
+        
+        p { 
+            margin-bottom: 15px; 
+            text-align: justify; 
+            font-size: 18px; 
+            color: var(--text-color);
+            font-weight: 500; 
         }
 
-        /* The Classic Block Layout (No Flexbox issues) */
-        .cv-ar .item { margin-bottom: 20px; }
-        .cv-ar .item-title { font-size: 18px; font-weight: bold; color: #000; display: block; }
-        .cv-ar .item-subtitle { font-size: 16px; color: var(--accent); display: block; margin-top: 2px; }
-        .cv-ar ul { padding-right: 20px; margin-top: 5px; }
-        .cv-ar li { margin-bottom: 5px; font-size: 15px; }
+        .item { margin-bottom: 25px; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+        .item-title { font-size: 20px; font-weight: 700; color: var(--text-color); }
+        
+        .date-badge { 
+            font-size: 14px; 
+            font-weight: 700; color: #fff; 
+            background-color: var(--primary-color); 
+            padding: 4px 12px; border-radius: 6px; 
+        }
 
-        /* --- MODERN ENGLISH STYLING (Kept New) --- */
-        .cv-en { font-family: 'Roboto', sans-serif; display: none; }
-        .cv-en h1 { text-transform: uppercase; font-size: 32px; color: var(--primary); }
-        .cv-en .header-flex { display: flex; justify-content: space-between; align-items: baseline; }
-        .cv-en .badge { background: var(--primary); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+        .institution { font-size: 18px; font-weight: 600; color: var(--secondary-color); }
+        .details { margin-top: 5px; font-size: 17px; color: var(--text-color); font-weight: 500; }
 
-        /* --- PRINT SETTINGS (SAFE MODE) --- */
+        /* Lists */
+        ul { margin: 0; list-style: none; }
+        li { position: relative; margin-bottom: 12px; font-size: 18px; color: var(--text-color); font-weight: 500; }
+        
+        .cv-ar ul { padding-right: 25px; }
+        .cv-ar ul li::before { content: "▪"; color: var(--secondary-color); position: absolute; right: -20px; font-size: 18px; }
+        
+        .cv-en ul { padding-left: 25px; }
+        .cv-en ul li::before { content: "▪"; color: var(--secondary-color); position: absolute; left: -20px; font-size: 18px; }
+
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .grid-col h3 { 
+            font-size: 20px; 
+            color: var(--secondary-color); 
+            margin-bottom: 15px; 
+            border-bottom: 1px dotted var(--border-color); 
+            font-weight: 700; 
+        }
+
+        /* Footer Actions */
+        .footer-actions {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            text-decoration: none;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            padding: 14px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            border: 2px solid var(--border-color);
+            transition: all 0.2s ease;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .footer-btn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        .footer-btn.primary {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border-color: var(--secondary-color);
+        }
+        .footer-btn.primary:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .grid-container { grid-template-columns: 1fr; }
+            .cv-container { padding: 30px 20px; }
+            .item-header { flex-direction: column; gap: 5px; }
+            .controls { top: 10px; left: 10px; flex-direction: column; }
+        }
+
+        /* --- FINAL PRINT FIX (3-Page Solver) --- */
         @media print {
-            body { padding: 0; background: #fff; }
-            .cv-container { width: 100%; max-width: 100%; padding: 0; box-shadow: none; border: none; }
-            .controls, .footer-actions { display: none; }
+            @page {
+                size: A4;
+                margin: 10mm; /* Moderate margin to keep text inside */
+            }
+
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+                /* COMPRESSION TRICK: Shrink slightly to fit mobile A4 engine */
+                zoom: 90%; 
+                min-height: 0 !important; /* Stop 100vh forcing pages */
+            }
+
+            .cv-container { 
+                box-shadow: none; 
+                border: none; 
+                margin: 0 auto; 
+                width: 100%; 
+                max-width: 100%; 
+                padding: 0; 
+                border-top: 2px solid var(--primary-color) !important; /* Keep a small top border for style */
+            }
+
+            .controls, .footer-actions { display: none !important; }
+            .date-badge { 
+                color: #000 !important; 
+                border: 1px solid #000; 
+                background: none !important; 
+            }
+            a { text-decoration: none; color: #000 !important; }
             
-            /* FORCE ARABIC TO BE SIMPLE BLOCKS */
-            .cv-ar .item-title { color: #000 !important; font-size: 14pt; }
-            .cv-ar .item-subtitle { color: #444 !important; font-size: 12pt; font-weight: bold; }
-            .cv-ar ul { color: #000; }
-            
-            /* English stays modern */
-            .cv-en .badge { border: 1px solid #000; color: #000; background: transparent; }
+            /* Anti-Split Logic */
+            .item, li, p, h2 { 
+                page-break-inside: avoid; 
+                break-inside: avoid; 
+            }
+
+            /* FORCE PAGE BREAK if needed, but 'Zoom' usually fixes it */
+            .print-break { 
+                page-break-before: always; 
+                break-before: page;
+                margin-top: 20px;
+                display: block;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <div class="controls">
-        <button class="btn" onclick="toggleLang()">Switch Language / اللغة</button>
-        <button class="btn" onclick="window.print()">Print / طباعة</button>
+        <button class="btn-float lang-toggle-btn" onclick="toggleLanguage()">
+            <i class="fas fa-globe"></i> <span id="btn-text">Switch to English</span>
+        </button>
+        <button class="btn-float theme-btn" onclick="toggleTheme()">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
     </div>
 
     <div class="cv-container">
         
-        <!-- === ARABIC (REVERTED TO CLASSIC) === -->
+        <!-- ================= ARABIC VERSION ================= -->
         <div id="cv-ar" class="cv-ar">
-            <header style="text-align: center;">
+            <header>
                 <h1>أحمد محمد صلاح عامر</h1>
-                <span class="role">مهندس مدني – Junior Site Engineer</span>
-                <p>01012489813 | engahmedmohammed00@gmail.com | الشرقية</p>
+                <span class="job-role">مهندس مدني – Junior Site Engineer</span>
+                <div class="contact-info">
+                    <span>الشرقية – منيا القمح <i class="fas fa-map-marker-alt"></i></span>
+                    <span dir="ltr">01012489813 <i class="fas fa-phone-alt"></i></span>
+                    <span>engahmedmohammed00@gmail.com <i class="fas fa-envelope"></i></span>
+                    <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank">in/ahmedmohammed00 <i class="fab fa-linkedin"></i></a>
+                </div>
             </header>
 
-            <h2>الملف المهني</h2>
-            <p>
-                مهندس مدني حديث التخرج (دفعة 2024 – جامعة الزقازيق)، حاصل على تدريب عملي بالمواقع في شركات مقاولات كبرى.
-                لدي أساس جيد في قراءة اللوحات التنفيذية، متابعة الأعمال الخرسانية، ومبادئ ضبط الجودة.
-            </p>
-
-            <h2>التعليم</h2>
-            <div class="item">
-                <span class="item-title">بكالوريوس الهندسة المدنية (2024)</span>
-                <span class="item-subtitle">جامعة الزقازيق</span>
-                <p>مشروع التخرج: الهندسة الهيدروليكية والموارد المائية (تقدير امتياز)</p>
+            <div class="section">
+                <h2>الملف المهني <i class="fas fa-user-tie"></i></h2>
+                <p>
+                    مهندس مدني حديث التخرج (دفعة 2024 – جامعة الزقازيق)، حاصل على تدريب عملي بالمواقع في شركات مقاولات كبرى. لدي أساس جيد في قراءة اللوحات التنفيذية، متابعة الأعمال الخرسانية، ومبادئ ضبط الجودة بالموقع تحت الإشراف. أسعى للعمل كـ Junior Site Engineer لاكتساب خبرة تنفيذية عملية، والتعلم من مهندسي الموقع، والالتزام بتعليمات السلامة والكود المصري أثناء التنفيذ.
+                </p>
             </div>
 
-            <h2>التدريب العملي</h2>
-            <div class="item">
-                <!-- Classic Layout: Title on one line, Role on the next -->
-                <span class="item-title">شركة المقاولون العرب</span>
-                <span class="item-subtitle">مهندس موقع (متدرب)</span>
-                <ul>
-                    <li>متابعة أعمال الخرسانة المسلحة تحت الإشراف.</li>
-                    <li>المشاركة في استلام الحدادة والنجارة.</li>
-                    <li>متابعة اختبارات الخرسانة (Slump – مكعبات).</li>
-                </ul>
+            <div class="section">
+                <h2>المؤهل العلمي <i class="fas fa-graduation-cap"></i></h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">بكالوريوس الهندسة المدنية</span>
+                        <span class="date-badge">2024</span>
+                    </div>
+                    <div class="institution">جامعة الزقازيق</div>
+                    <div class="details">
+                        <strong>مشروع التخرج:</strong> الهندسة الهيدروليكية والموارد المائية – <strong>التقدير:</strong> امتياز
+                    </div>
+                </div>
             </div>
 
-            <div class="item">
-                <span class="item-title">شركة القناة لتوزيع الكهرباء</span>
-                <span class="item-subtitle">مهندس موقع (متدرب)</span>
-                <ul>
-                    <li>متابعة أعمال الصيانة والتشطيبات.</li>
-                    <li>المساعدة في حصر الكميات.</li>
-                    <li>التنسيق مع فريق الكهرباء.</li>
-                </ul>
+            <div class="section">
+                <h2>التدريب العملي <i class="fas fa-briefcase"></i></h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">شركة المقاولون العرب</span>
+                        <span class="date-badge">مهندس موقع (متدرب)</span>
+                    </div>
+                    <ul>
+                        <li>متابعة أعمال الخرسانة المسلحة تحت الإشراف.</li>
+                        <li>المشاركة في استلام الحدادة والنجارة قبل الصب.</li>
+                        <li>متابعة اختبارات الخرسانة (Slump – مكعبات).</li>
+                    </ul>
+                </div>
+
+                <!-- ADDED CLASS: print-break -->
+                <div class="item print-break">
+                    <div class="item-header">
+                        <span class="item-title">شركة القناة لتوزيع الكهرباء</span>
+                        <span class="date-badge">مهندس موقع (متدرب)</span>
+                    </div>
+                    <ul>
+                        <li>متابعة أعمال الصيانة والتشطيبات.</li>
+                        <li>المساعدة في حصر الكميات.</li>
+                        <li>التنسيق مع فريق الكهرباء.</li>
+                    </ul>
+                </div>
             </div>
 
-            <h2>المهارات</h2>
-            <ul>
-                <li>قراءة اللوحات الهندسية (Shop Drawings).</li>
-                <li>حصر الكميات (Quantity Surveying).</li>
-                <li>AutoCAD (2D) & MS Office.</li>
-                <li>اللغة الإنجليزية: مستوى ممتاز.</li>
-            </ul>
+            <div class="section">
+                <h2>المهارات والدورات <i class="fas fa-tools"></i></h2>
+                <div class="grid-container">
+                    <div class="grid-col">
+                        <h3>المهارات واللغات</h3>
+                        <ul>
+                            <li>قراءة اللوحات الهندسية.</li>
+                            <li>أساسيات المكتب الفني (حصر الكميات).</li>
+                            <li>AutoCAD (2D) & MS Office.</li>
+                            <li><strong>الإنجليزية:</strong> مستوى ممتاز (Excellent).</li>
+                        </ul>
+                    </div>
+                    <div class="grid-col">
+                        <h3>الدورات التدريبية</h3>
+                        <ul>
+                            <li><strong>دورة تنفيذ المنشآت:</strong> د. حسن قنديل (إعداد مهندس موقع).</li>
+                            <li><strong>دورة AutoCAD:</strong> الرسم الهندسي والطباعة.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- === ENGLISH (KEPT MODERN) === -->
+        <!-- ================= ENGLISH VERSION ================= -->
         <div id="cv-en" class="cv-en">
-            <header style="text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 20px; margin-bottom: 20px;">
+            <header>
                 <h1>Ahmed Mohamed Salah Amer</h1>
-                <h3 style="color: #4682b4; margin: 5px 0;">Civil Engineer – Junior Site Engineer</h3>
-                <p>+20 101 248 9813 | engahmedmohammed00@gmail.com | Sharkia, Egypt</p>
-                <p>linkedin.com/in/ahmedmohammed00</p>
+                <span class="job-role">Civil Engineer – Junior Site Engineer</span>
+                <div class="contact-info">
+                    <span><i class="fas fa-map-marker-alt"></i> Sharkia, Egypt</span>
+                    <span><i class="fas fa-phone-alt"></i> +20 101 248 9813</span>
+                    <span><i class="fas fa-envelope"></i> engahmedmohammed00@gmail.com</span>
+                    <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank"><i class="fab fa-linkedin"></i> in/ahmedmohammed00</a>
+                </div>
             </header>
 
-            <h2 style="color: #1e2a38; border-bottom: 2px solid #1e2a38;">Professional Summary</h2>
-            <p>Fresh Graduate Civil Engineer (Zagazig University '24) with practical site training. Skilled in site supervision, concrete works, and AutoCAD. Seeking a Junior Site Engineer position.</p>
+            <div class="section">
+                <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
+                <p>
+                    Fresh Graduate Civil Engineer (Class of 2024 – Zagazig University) with practical site training experience in reputable construction companies. Possess a solid foundation in reading construction drawings, following up concrete works, and basic quality control procedures under supervision. Seeking a Junior Site Engineer position to gain hands-on execution experience.
+                </p>
+            </div>
 
-            <h2 style="color: #1e2a38; border-bottom: 2px solid #1e2a38; margin-top: 20px;">Experience</h2>
-            
-            <div style="margin-bottom: 20px;">
-                <div class="header-flex">
-                    <strong style="font-size: 18px;">Arab Contractors</strong>
-                    <span class="badge">Site Engineer Trainee</span>
+            <div class="section">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Bachelor of Civil Engineering</span>
+                        <span class="date-badge">2024</span>
+                    </div>
+                    <div class="institution">Zagazig University</div>
+                    <div class="details">
+                        <strong>Graduation Project:</strong> Hydrology & Water Resources – <strong>Grade:</strong> Excellent
+                    </div>
                 </div>
-                <ul>
-                    <li>Supervised reinforced concrete pouring.</li>
-                    <li>Inspected rebar and formwork.</li>
-                    <li>Monitored concrete quality tests.</li>
-                </ul>
             </div>
 
-            <div style="margin-bottom: 20px; page-break-before: always;">
-                <div class="header-flex">
-                    <strong style="font-size: 18px;">Canal Electricity Distribution Co.</strong>
-                    <span class="badge">Site Engineer Trainee</span>
+            <div class="section">
+                <h2><i class="fas fa-briefcase"></i> Practical Training</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Arab Contractors</span>
+                        <span class="date-badge">Site Engineer Trainee</span>
+                    </div>
+                    <ul>
+                        <li>Assisted in supervising reinforced concrete works.</li>
+                        <li>Participated in rebar and formwork inspections.</li>
+                        <li>Attended concrete quality tests.</li>
+                    </ul>
                 </div>
-                <ul>
-                    <li>Assisted in finishing works.</li>
-                    <li>Supported quantity surveying tasks.</li>
-                </ul>
+
+                <!-- ADDED CLASS: print-break -->
+                <div class="item print-break">
+                    <div class="item-header">
+                        <span class="item-title">Canal Electricity Distribution Company</span>
+                        <span class="date-badge">Site Engineer Trainee</span>
+                    </div>
+                    <ul>
+                        <li>Assisted in architectural finishing works.</li>
+                        <li>Supported quantity takeoff tasks.</li>
+                        <li>Coordinated with electrical maintenance teams.</li>
+                    </ul>
+                </div>
             </div>
 
-            <h2 style="color: #1e2a38; border-bottom: 2px solid #1e2a38;">Education</h2>
-            <div class="header-flex">
-                <strong>B.Sc. Civil Engineering (2024)</strong>
-                <span>Zagazig University</span>
+            <div class="section">
+                <h2><i class="fas fa-tools"></i> Skills & Courses</h2>
+                <div class="grid-container">
+                    <div class="grid-col">
+                        <h3>Technical Skills & Languages</h3>
+                        <ul>
+                            <li>Reading construction drawings.</li>
+                            <li>Technical Office Basics (Quantity Surveying).</li>
+                            <li>AutoCAD (2D) & MS Office.</li>
+                            <li><strong>English:</strong> Excellent Proficiency.</li>
+                        </ul>
+                    </div>
+                    <div class="grid-col">
+                        <h3>Certifications</h3>
+                        <ul>
+                            <li><strong>Construction Execution Course:</strong> Dr. Hassan Kandil.</li>
+                            <li><strong>AutoCAD Course:</strong> 2D Drafting.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <p>Graduation Project: Hydraulics (Grade: Excellent)</p>
+        </div>
 
-            <h2 style="color: #1e2a38; border-bottom: 2px solid #1e2a38;">Skills</h2>
-            <ul>
-                <li>AutoCAD 2D, MS Office.</li>
-                <li>Site Inspection, QS.</li>
-                <li>English: Professional Proficiency.</li>
-            </ul>
+        <!-- Footer Actions -->
+        <div class="footer-actions">
+            <button onclick="window.print()" class="footer-btn primary">
+                <i class="fas fa-file-pdf"></i> <span id="txt-pdf">حفظ كـ PDF / طباعة</span>
+            </button>
+
+            <a href="index.html" class="footer-btn" id="btn-back">
+                <i class="fas fa-home"></i> <span id="txt-back">الرجوع للرئيسية</span>
+            </a>
         </div>
 
     </div>
 
     <script>
-        function toggleLang() {
-            const ar = document.getElementById('cv-ar');
-            const en = document.getElementById('cv-en');
-            if (ar.style.display === 'none') {
-                ar.style.display = 'block';
-                en.style.display = 'none';
-                document.getElementById('main-html').setAttribute('dir', 'rtl');
+        function toggleLanguage() {
+            const htmlTag = document.getElementById('main-html');
+            const arDiv = document.getElementById('cv-ar');
+            const enDiv = document.getElementById('cv-en');
+            const btnText = document.getElementById('btn-text');
+            const txtPdf = document.getElementById('txt-pdf');
+            const txtBack = document.getElementById('txt-back');
+            const controls = document.querySelector('.controls');
+
+            if (arDiv.style.display === 'none') {
+                // Switch to Arabic
+                arDiv.style.display = 'block';
+                enDiv.style.display = 'none';
+                htmlTag.setAttribute('dir', 'rtl');
+                btnText.innerText = "Switch to English";
+                controls.style.left = '20px'; controls.style.right = 'auto';
+                
+                txtPdf.innerText = "حفظ كـ PDF / طباعة";
+                txtBack.innerText = "الرجوع للرئيسية";
             } else {
-                ar.style.display = 'none';
-                en.style.display = 'block';
-                document.getElementById('main-html').setAttribute('dir', 'ltr');
+                // Switch to English
+                arDiv.style.display = 'none';
+                enDiv.style.display = 'block';
+                htmlTag.setAttribute('dir', 'ltr');
+                btnText.innerText = "التبديل للعربية";
+                controls.style.right = '20px'; controls.style.left = 'auto';
+                
+                txtPdf.innerText = "Save as PDF / Print";
+                txtBack.innerText = "Back to Home";
             }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
 </body>
