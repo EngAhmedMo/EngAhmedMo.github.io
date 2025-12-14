@@ -23,6 +23,7 @@
             /* COLOR PALETTE */
             --primary-color: #1e2a38; /* Navy */
             --accent-color: #4682b4;  /* Steel Blue */
+            --accent-light: #6ba3d1; /* Light Steel Blue - NEW */
             --bg-color: #f0f4f8;      
             --card-bg: #ffffff;
             --text-main: #1a2a3a;
@@ -31,12 +32,15 @@
             --btn-border: #eee;
             --shadow: rgba(0,0,0,0.1);
             --grid-line: rgba(30, 42, 56, 0.06); /* Subtle Navy Grid Lines */
+            --gradient-start: rgba(70, 130, 180, 0.05); /* NEW */
+            --gradient-end: rgba(70, 130, 180, 0.02); /* NEW */
         }
 
         /* Dark Theme */
         [data-theme="dark"] {
             --primary-color: #90caf9;
             --accent-color: #64b5f6;
+            --accent-light: #42a5f5;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --text-main: #ffffff;
@@ -45,17 +49,20 @@
             --btn-border: #333;
             --shadow: rgba(0,0,0,0.5);
             --grid-line: rgba(255, 255, 255, 0.05);
+            --gradient-start: rgba(100, 181, 246, 0.08);
+            --gradient-end: rgba(100, 181, 246, 0.03);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg-color);
             
-            /* ENGINEERING GRID RESTORED */
+            /* ENGINEERING GRID + SUBTLE GRADIENT */
             background-image: 
+                linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%),
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 25px 25px; /* 2.5cm Grid Scale */
+            background-size: 100% 100%, 25px 25px, 25px 25px; /* 2.5cm Grid Scale */
             
             color: var(--text-main);
             margin: 0;
@@ -64,23 +71,45 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            
+            /* SMOOTH ANIMATIONS */
+            transition: background-color 0.3s ease;
         }
 
-        /* --- THE BIG CARD --- */
+        /* --- THE BIG CARD WITH ENHANCEMENTS --- */
         .card-container {
             background-color: var(--card-bg);
             width: 100%;
             max-width: 380px; 
             padding: 50px 30px; 
             border-radius: 25px;
-            box-shadow: 0 15px 35px var(--shadow);
+            box-shadow: 0 15px 35px var(--shadow), 
+                        0 5px 15px rgba(70, 130, 180, 0.1); /* ENHANCED SHADOW */
             text-align: center;
             border-top: 6px solid var(--accent-color);
             position: relative;
             backdrop-filter: blur(5px); /* Modern Glass effect */
+            
+            /* SMOOTH FADE-IN ANIMATION */
+            animation: fadeInUp 0.6s ease-out;
+            
+            /* SMOOTH TRANSITIONS */
+            transition: all 0.3s ease;
         }
 
-        /* Profile Image */
+        /* FADE-IN ANIMATION */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Profile Image WITH ENHANCED ANIMATION */
         .profile-wrapper {
             width: 160px; 
             height: 160px;
@@ -90,19 +119,55 @@
             background: var(--card-bg);
             border: 3px solid var(--accent-color);
             box-shadow: 0 8px 20px var(--shadow);
-        }
-        .profile-img {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
+            
+            /* SMOOTH TRANSITIONS */
+            transition: all 0.3s ease;
+            
+            /* DELAYED ANIMATION */
+            animation: fadeInScale 0.8s ease-out 0.2s backwards;
         }
 
-        /* TYPOGRAPHY */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .profile-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px var(--shadow);
+        }
+
+        .profile-img {
+            width: 100%; 
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-wrapper:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        /* TYPOGRAPHY WITH STAGGERED ANIMATION */
         h1 {
             color: var(--primary-color);
             font-size: 28px; 
             margin: 0 0 10px;
             font-weight: 800;
+            animation: fadeIn 0.6s ease-out 0.3s backwards;
+            transition: color 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .job-title {
@@ -113,6 +178,8 @@
             display: block;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            animation: fadeIn 0.6s ease-out 0.4s backwards;
+            transition: color 0.3s ease;
         }
 
         .bio-text {
@@ -121,9 +188,11 @@
             margin: 0 0 35px;
             font-weight: 600;
             line-height: 1.5;
+            animation: fadeIn 0.6s ease-out 0.5s backwards;
+            transition: color 0.3s ease;
         }
 
-        /* BUTTONS */
+        /* BUTTONS WITH ENHANCED EFFECTS */
         .links-group {
             display: flex;
             flex-direction: column;
@@ -143,34 +212,87 @@
             border: 2px solid var(--btn-border);
             font-weight: 700;
             font-size: 16px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease; /* ENHANCED TIMING */
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            
+            /* STAGGERED ANIMATION FOR BUTTONS */
+            animation: slideInRight 0.5s ease-out backwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* STAGGER DELAYS FOR EACH BUTTON */
+        .link-btn:nth-child(1) { animation-delay: 0.6s; }
+        .link-btn:nth-child(2) { animation-delay: 0.7s; }
+        .link-btn:nth-child(3) { animation-delay: 0.8s; }
+        .link-btn:nth-child(4) { animation-delay: 0.9s; }
+
+        /* ENHANCED HOVER WITH GRADIENT OVERLAY */
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(70, 130, 180, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
         }
 
         .link-btn:hover {
             border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow);
+            transform: translateY(-3px); /* ENHANCED */
+            box-shadow: 0 8px 20px var(--shadow); /* ENHANCED */
         }
 
-        /* Primary CV Button with PULSE */
+        .link-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Primary CV Button with ENHANCED PULSE */
         .link-btn.primary {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); /* GRADIENT */
             color: #fff;
             border-color: var(--primary-color);
-            animation: pulse-shadow 2s infinite;
+            animation: pulse-shadow 2s infinite, slideInRight 0.5s ease-out 0.6s backwards;
         }
-        .link-btn.primary:hover { opacity: 0.95; }
+
+        .link-btn.primary:hover { 
+            opacity: 0.95;
+            transform: translateY(-3px) scale(1.02); /* ENHANCED */
+        }
 
         @keyframes pulse-shadow {
-            0% { box-shadow: 0 0 0 0 rgba(70, 130, 180, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(70, 130, 180, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(70, 130, 180, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(70, 130, 180, 0); }
             100% { box-shadow: 0 0 0 0 rgba(70, 130, 180, 0); }
         }
 
-        .link-btn i { font-size: 20px; }
+        .link-btn i { 
+            font-size: 20px;
+            transition: transform 0.3s ease; /* ICON ANIMATION */
+        }
 
-        /* FIXED THEME TOGGLE */
+        .link-btn:hover i {
+            transform: scale(1.2) rotate(5deg); /* ENHANCED ICON EFFECT */
+        }
+
+        /* FIXED THEME TOGGLE WITH ENHANCED EFFECTS */
         .theme-toggle {
             position: fixed; 
             top: 20px; 
@@ -178,27 +300,83 @@
             background: var(--card-bg);
             border: 2px solid var(--btn-border);
             color: var(--text-main);
-            width: 45px; height: 45px;
+            width: 50px; /* SLIGHTLY BIGGER */
+            height: 50px;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 22px; /* BIGGER ICON */
             z-index: 9999; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            
+            /* SMOOTH TRANSITIONS */
+            transition: all 0.3s ease;
+            
+            /* FADE IN ANIMATION */
+            animation: fadeInScale 0.6s ease-out 1s backwards;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(20deg); /* ENHANCED ROTATION */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            border-color: var(--accent-color);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .theme-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 480px) {
+            .card-container {
+                padding: 40px 25px;
+                max-width: 100%;
+            }
+            
+            h1 { font-size: 24px; }
+            .job-title { font-size: 16px; }
+            .bio-text { font-size: 14px; }
+            
+            .profile-wrapper {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        /* SMOOTH TRANSITIONS FOR THEME CHANGE */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* PREVENT TRANSITION ON PAGE LOAD */
+        .no-transition * {
+            transition: none !important;
         }
     </style>
 </head>
 <body>
 
     <!-- Dark Mode Button -->
-    <button class="theme-toggle" onclick="toggleTheme()">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
         <i class="fas fa-moon" id="theme-icon"></i>
     </button>
 
     <div class="card-container">
         
         <div class="profile-wrapper">
-            <img src="profile.jpg" alt="Ahmed Amer" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+            <img src="profile.jpg" alt="Ahmed Amer Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
         </div>
 
         <h1>أحمد محمد صلاح عامر</h1>
@@ -206,33 +384,37 @@
         <span class="job-title">Civil Engineer | Junior Site Engineer</span>
 
         <p class="bio-text">
-            Civil Engineering Graduate (Zagazig University '24).
+            Civil Engineering Graduate (Zagazig University '24)
         </p>
 
         <div class="links-group">
-            <a href="cv.html" class="link-btn primary">
+            <a href="cv.html" class="link-btn primary" aria-label="View CV">
                 <i class="fas fa-file-alt"></i> CV
             </a>
 
-            <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank" class="link-btn">
+            <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank" rel="noopener noreferrer" class="link-btn" aria-label="LinkedIn Profile">
                 <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
             </a>
 
-            <a href="https://wa.me/201012489813" target="_blank" class="link-btn">
+            <a href="https://wa.me/201012489813" target="_blank" rel="noopener noreferrer" class="link-btn" aria-label="WhatsApp Contact">
                 <i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp
             </a>
 
-            <a href="mailto:engahmedmohammed00@gmail.com" class="link-btn">
+            <a href="/cdn-cgi/l/email-protection#b0d5ded7d1d8ddd5d4dddfd8d1ddddd5d48080f0d7ddd1d9dc9ed3dfdd" class="link-btn" aria-label="Send Email">
                 <i class="fas fa-envelope" style="color: #ea4335;"></i> Email Me
             </a>
         </div>
 
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // PREVENT TRANSITION FLASH ON PAGE LOAD
+        document.body.classList.add('no-transition');
+        
         function toggleTheme() {
             const html = document.documentElement;
             const icon = document.getElementById('theme-icon');
+            
             if (html.getAttribute('data-theme') === 'dark') {
                 html.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'light');
@@ -244,11 +426,19 @@
             }
         }
         
+        // LOAD SAVED THEME
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('theme-icon').className = 'fas fa-sun';
         }
+        
+        // ENABLE TRANSITIONS AFTER PAGE LOAD
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.body.classList.remove('no-transition');
+            }, 100);
+        });
     </script>
 </body>
 </html>
