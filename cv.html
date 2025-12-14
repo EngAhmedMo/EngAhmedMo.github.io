@@ -14,6 +14,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Roboto:wght@300;400;500;700&display=swap');
 
         :root {
+            /* Default Light Theme Variables */
             --primary-color: #1e2a38; 
             --secondary-color: #4682b4; 
             --text-color: #2c3e50;
@@ -22,9 +23,11 @@
             --container-bg: #fff;
             --border-color: #e0e0e0;
             --header-border: #1e2a38;
+            --badge-bg: #1e2a38;
+            --badge-text: #fff;
         }
 
-        /* Dark Theme */
+        /* Dark Theme Variables */
         [data-theme="dark"] {
             --primary-color: #90caf9;
             --secondary-color: #64b5f6;
@@ -34,6 +37,8 @@
             --container-bg: #1e1e1e;
             --border-color: #333;
             --header-border: #90caf9;
+            --badge-bg: #64b5f6;
+            --badge-text: #000;
         }
 
         body {
@@ -58,7 +63,7 @@
             margin-bottom: 50px;
         }
 
-        /* Controls & Buttons */
+        /* Controls */
         .controls { position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 10px; }
         .btn-float {
             background-color: var(--primary-color); color: #fff; border: none;
@@ -70,7 +75,7 @@
             border: 2px solid --primary-color; padding: 10px; width: 42px; justify-content: center;
         }
 
-        /* Typography Defaults */
+        /* Typography */
         .cv-ar { font-family: 'Tajawal', sans-serif; line-height: 1.6; }
         .cv-en { font-family: 'Roboto', sans-serif; line-height: 1.5; display: none; }
 
@@ -93,7 +98,17 @@
         .item { margin-bottom: 20px; }
         .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
         .item-title { font-size: 18px; font-weight: 700; }
-        .date-badge { font-size: 12px; background-color: var(--primary-color); color: #fff; padding: 3px 10px; border-radius: 4px; }
+        
+        /* Badge Design */
+        .date-badge { 
+            font-size: 12px; 
+            background-color: var(--badge-bg); 
+            color: var(--badge-text); 
+            padding: 3px 10px; 
+            border-radius: 4px; 
+            font-weight: 700;
+        }
+        
         .institution { font-size: 16px; font-weight: 600; color: var(--secondary-color); }
 
         ul { margin: 0; list-style: none; padding: 0; }
@@ -113,7 +128,6 @@
         }
         .footer-btn.primary { background: var(--secondary-color); color: #fff; border-color: var(--secondary-color); }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .grid-container { grid-template-columns: 1fr; }
             .cv-container { padding: 30px 20px; }
@@ -121,58 +135,64 @@
             .controls { flex-direction: column; }
         }
 
-        /* --- AGGRESSIVE PRINT SETTINGS --- */
+        /* --- FINAL PRINT FIXES --- */
         @media print {
-            /* 1. Reset Page */
-            @page {
-                size: A4;
-                margin: 10mm; /* Fixed margins for the paper */
+            /* 1. FORCE LIGHT THEME COLORS */
+            :root {
+                --primary-color: #000 !important;
+                --secondary-color: #333 !important;
+                --text-color: #000 !important;
+                --text-light: #000 !important;
+                --bg-color: #fff !important;
+                --container-bg: #fff !important;
+                --border-color: #ccc !important;
+                --header-border: #000 !important;
             }
 
-            /* 2. Reset Body */
+            /* 2. Reset Page */
+            @page { size: A4; margin: 0.5cm; }
+            
+            /* 3. Reset Body */
             html, body {
-                width: 210mm;
-                height: 100%;
-                margin: 0 !important;
-                padding: 0 !important;
-                background: white;
-                /* CRITICAL: Stop Mobile Inflation */
+                width: 210mm; height: 100%; margin: 0 !important; padding: 0 !important;
+                background: white !important;
                 -webkit-text-size-adjust: none; 
                 text-size-adjust: none;
+                color: #000 !important;
             }
 
-            /* 3. Container Full Width */
-            .cv-container {
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: none !important;
-                box-shadow: none !important;
+            .cv-container { 
+                box-shadow: none !important; border: none !important; 
+                margin: 0 auto !important; width: 100% !important; padding: 0 !important; 
+                background: white !important;
             }
 
-            /* 4. Hide UI */
             .controls, .footer-actions, button { display: none !important; }
-
-            /* 5. Force Font Sizes (pt units are physical, px are pixels) */
-            h1 { font-size: 24pt !important; margin-bottom: 5pt; }
-            .job-role { font-size: 14pt !important; margin-bottom: 10pt; }
-            h2 { font-size: 16pt !important; margin-top: 15pt; border-bottom-width: 1pt; }
-            .item-title { font-size: 13pt !important; }
-            p, li, .institution { font-size: 11pt !important; line-height: 1.4; }
-            .date-badge { font-size: 9pt !important; padding: 2pt 6pt; border: 1px solid #000; color: #000 !important; }
             
-            /* 6. Colors to Black */
-            body { -webkit-print-color-adjust: exact; color: #000; }
+            /* 4. Fix Dark Blobs (Badges) */
+            .date-badge {
+                background-color: transparent !important; /* No dark bg */
+                border: 1px solid #000 !important;        /* Crisp border */
+                color: #000 !important;                   /* Black text */
+                font-weight: bold;
+            }
+
+            /* 5. Force Font Sizes */
+            h1 { font-size: 24pt !important; margin-bottom: 5pt; }
+            .job-role { font-size: 14pt !important; margin-bottom: 10pt; color: #333 !important; }
+            h2 { font-size: 16pt !important; margin-top: 15pt; border-bottom: 2px solid #000 !important; }
+            .item-title { font-size: 13pt !important; }
+            p, li, .institution { font-size: 11pt !important; line-height: 1.4; color: #000 !important; }
+            
             a { color: #000 !important; text-decoration: none; }
 
-            /* 7. Anti-Split Logic */
+            /* 6. Anti-Split Logic */
             .item, li, p { page-break-inside: avoid; break-inside: avoid; }
 
-            /* 8. FORCE PAGE BREAK (Double Command) */
+            /* 7. Page Break Force */
             .print-break {
-                page-break-before: always !important; /* Old Browsers */
-                break-before: page !important;        /* New Browsers */
+                page-break-before: always !important; 
+                break-before: page !important;
                 margin-top: 20pt;
                 display: block;
             }
@@ -193,7 +213,7 @@
 
     <div class="cv-container">
         
-        <!-- ================= ARABIC VERSION ================= -->
+        <!-- ARABIC -->
         <div id="cv-ar" class="cv-ar">
             <header>
                 <h1>أحمد محمد صلاح عامر</h1>
@@ -241,7 +261,6 @@
                     </ul>
                 </div>
 
-                <!-- Print Break applied here -->
                 <div class="item print-break">
                     <div class="item-header">
                         <span class="item-title">شركة القناة لتوزيع الكهرباء</span>
@@ -278,7 +297,7 @@
             </div>
         </div>
 
-        <!-- ================= ENGLISH VERSION ================= -->
+        <!-- ENGLISH -->
         <div id="cv-en" class="cv-en">
             <header>
                 <h1>Ahmed Mohamed Salah Amer</h1>
@@ -326,7 +345,6 @@
                     </ul>
                 </div>
 
-                <!-- Print Break applied here -->
                 <div class="item print-break">
                     <div class="item-header">
                         <span class="item-title">Canal Electricity Distribution Company</span>
@@ -363,12 +381,10 @@
             </div>
         </div>
 
-        <!-- Footer Actions -->
         <div class="footer-actions">
             <button onclick="window.print()" class="footer-btn primary">
                 <i class="fas fa-file-pdf"></i> <span id="txt-pdf">حفظ كـ PDF / طباعة</span>
             </button>
-
             <a href="index.html" class="footer-btn" id="btn-back">
                 <i class="fas fa-home"></i> <span id="txt-back">الرجوع للرئيسية</span>
             </a>
@@ -387,23 +403,21 @@
             const controls = document.querySelector('.controls');
 
             if (arDiv.style.display === 'none') {
-                // Switch to Arabic
+                // To Arabic
                 arDiv.style.display = 'block';
                 enDiv.style.display = 'none';
                 htmlTag.setAttribute('dir', 'rtl');
                 btnText.innerText = "Switch to English";
                 controls.style.left = '20px'; controls.style.right = 'auto';
-                
                 txtPdf.innerText = "حفظ كـ PDF / طباعة";
                 txtBack.innerText = "الرجوع للرئيسية";
             } else {
-                // Switch to English
+                // To English
                 arDiv.style.display = 'none';
                 enDiv.style.display = 'block';
                 htmlTag.setAttribute('dir', 'ltr');
                 btnText.innerText = "التبديل للعربية";
                 controls.style.right = '20px'; controls.style.left = 'auto';
-                
                 txtPdf.innerText = "Save as PDF / Print";
                 txtBack.innerText = "Back to Home";
             }
@@ -418,6 +432,11 @@
                 html.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
             }
+        }
+        
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
 </body>
