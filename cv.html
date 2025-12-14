@@ -61,16 +61,8 @@
             margin-bottom: 50px;
         }
 
-        /* --- CONTROLS (DESKTOP) --- */
-        .controls { 
-            position: fixed; 
-            top: 20px; 
-            left: 20px; 
-            z-index: 1000; 
-            display: flex; 
-            gap: 10px; 
-        }
-
+        /* Controls */
+        .controls { position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 10px; }
         .btn-float {
             background-color: var(--primary-color); color: #fff; border: none;
             padding: 10px 20px; border-radius: 30px; cursor: pointer;
@@ -104,17 +96,17 @@
 
         .item { margin-bottom: 20px; }
         
-        /* ITEM HEADER (FLEX WRAP FIX) */
+        /* Flex Header logic */
         .item-header { 
             display: flex; 
             justify-content: space-between; 
-            align-items: center; /* Changed from baseline to center for better stacking */
-            margin-bottom: 5px; 
-            flex-wrap: wrap; /* CRITICAL FIX: Allows wrapping if space is tight */
-            gap: 5px;
+            align-items: center; 
+            margin-bottom: 8px; 
+            flex-wrap: wrap; /* Allows wrapping on small screens */
+            gap: 8px;
         }
         
-        .item-title { font-size: 18px; font-weight: 700; }
+        .item-title { font-size: 18px; font-weight: 700; line-height: 1.2; }
         
         .date-badge { 
             font-size: 12px; 
@@ -123,7 +115,8 @@
             padding: 4px 10px; 
             border-radius: 4px; 
             font-weight: 700;
-            white-space: nowrap; /* Keep the badge text on one line */
+            white-space: nowrap; 
+            flex-shrink: 0; /* Prevents badge from squishing */
         }
         
         .institution { font-size: 16px; font-weight: 600; color: var(--secondary-color); }
@@ -136,7 +129,6 @@
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .grid-col h3 { font-size: 18px; color: var(--secondary-color); margin-bottom: 10px; border-bottom: 1px dotted var(--border-color); }
 
-        /* Footer */
         .footer-actions { margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 20px; display: flex; justify-content: center; gap: 15px; }
         .footer-btn { 
             display: inline-flex; align-items: center; gap: 8px; text-decoration: none; 
@@ -145,37 +137,22 @@
         }
         .footer-btn.primary { background: var(--secondary-color); color: #fff; border-color: var(--secondary-color); }
 
-        /* --- MOBILE VIEW --- */
+        /* --- MOBILE TWEAKS --- */
         @media (max-width: 600px) {
             .grid-container { grid-template-columns: 1fr; }
             .cv-container { padding: 30px 20px; }
             
-            /* Better Stacking for Mobile */
-            .item-header { 
-                align-items: flex-start; /* Align left/right based on dir */
-            }
-            .date-badge {
-                margin-top: 2px;
-                font-size: 11px;
-            }
+            /* Tweak Company Name size to fit Badge next to it */
+            .item-title { font-size: 15px; } 
+            .date-badge { font-size: 11px; padding: 3px 8px; }
+            
+            /* Ensure alignment */
+            .item-header { justify-content: space-between; }
 
-            /* MOVE CONTROLS TO BOTTOM (FAB STYLE) */
-            .controls { 
-                top: auto; 
-                bottom: 20px; 
-                left: auto; 
-                right: 20px; /* Floating Bottom Right */
-                flex-direction: column-reverse; /* Stack upwards */
-                align-items: flex-end;
-            }
-            /* Language Button smaller on mobile */
-            .lang-toggle-btn {
-                padding: 8px 15px;
-                font-size: 12px;
-            }
+            .controls { top: auto; bottom: 20px; left: auto; right: 20px; flex-direction: column-reverse; align-items: flex-end; }
         }
 
-        /* --- PRINT SETTINGS --- */
+        /* --- PRINT SETTINGS (SYSTEM FONT FALLBACK) --- */
         @media print {
             :root {
                 --primary-color: #000 !important;
@@ -194,7 +171,14 @@
                 background: white !important;
                 -webkit-text-size-adjust: none; text-size-adjust: none;
                 color: #000 !important;
+                
+                /* CRITICAL: Use System Fonts for Print to prevent errors */
+                font-family: Arial, Helvetica, sans-serif !important;
             }
+
+            /* Override Typography for Print */
+            .cv-ar { font-family: Arial, Helvetica, sans-serif !important; }
+            .cv-en { font-family: Arial, Helvetica, sans-serif !important; }
 
             .cv-container { 
                 box-shadow: none !important; border: none !important; 
@@ -209,13 +193,9 @@
                 border: 1px solid #000 !important; 
                 color: #000 !important; 
                 font-weight: bold;
-                white-space: normal; /* Allow text to wrap if VERY tight */
             }
 
-            /* FORCE VISIBILITY */
-            .item-header {
-                flex-wrap: wrap !important; /* Ensure wrapping in print */
-            }
+            .item-header { flex-wrap: nowrap !important; } /* Force single line in print */
 
             h1 { font-size: 24pt !important; margin-bottom: 5pt; }
             .job-role { font-size: 14pt !important; margin-bottom: 10pt; color: #333 !important; }
@@ -236,7 +216,6 @@
 </head>
 <body>
 
-    <!-- Updated Controls (Will Float Bottom-Right on Mobile) -->
     <div class="controls">
         <button class="btn-float lang-toggle-btn" onclick="toggleLanguage()">
             <i class="fas fa-globe"></i> <span id="btn-text">Switch to English</span>
@@ -436,8 +415,6 @@
             const txtPdf = document.getElementById('txt-pdf');
             const txtBack = document.getElementById('txt-back');
             
-            // CONTROLS VISIBILITY LOGIC HANDLED BY CSS NOW (No position change needed in JS)
-
             if (arDiv.style.display === 'none') {
                 arDiv.style.display = 'block';
                 enDiv.style.display = 'none';
