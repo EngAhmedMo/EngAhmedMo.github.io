@@ -8,11 +8,11 @@
     <meta property="og:title" content="Ahmed Amer | Civil Engineer">
     <meta property="og:image" content="profile.jpg">
     <title>Ahmed Amer | Contact</title>
-
-    <!-- FAVICON RESTORED HERE -->
+    
+    <!-- FAVICON -->
     <link rel="icon" type="image/jpg" href="profile.jpg">
     
-    <!-- Fonts: Using Cairo (Large & Clear) -->
+    <!-- Fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
     </style>
@@ -20,13 +20,13 @@
 
     <style>
         :root {
-            /* COLOR PALETTE */
+            /* COLOR PALETTE (Synced with CV) */
             --primary-color: #1e2a38; /* Navy */
             --accent-color: #4682b4;  /* Steel Blue */
             --bg-color: #f0f4f8;      
             --card-bg: #ffffff;
             --text-main: #1a2a3a;
-            --text-sub: #666; /* Grey for Bio */
+            --text-sub: #666; 
             --btn-bg: #ffffff;
             --btn-border: #eee;
             --shadow: rgba(0,0,0,0.1);
@@ -59,7 +59,7 @@
             justify-content: center;
         }
 
-        /* --- THE BIG CARD --- */
+        /* --- THE BIG CARD (Original Layout) --- */
         .card-container {
             background-color: var(--card-bg);
             width: 100%;
@@ -101,18 +101,18 @@
         .job-title {
             color: var(--accent-color);
             font-size: 18px;
-            margin: 0 0 10px; /* Reduced margin to fit Bio */
+            margin: 0 0 10px;
             font-weight: 700;
             display: block;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* BIO TEXT */
+        /* BIO TEXT (Restored) */
         .bio-text {
             color: var(--text-sub);
-            font-size: 16px; /* Readable Size */
-            margin: 0 0 35px; /* Space before buttons */
+            font-size: 16px;
+            margin: 0 0 35px;
             font-weight: 600;
             line-height: 1.5;
         }
@@ -156,10 +156,11 @@
 
         .link-btn i { font-size: 20px; }
 
-        /* Theme Toggle */
+        /* FIXED THEME TOGGLE (Visible on Mobile) */
         .theme-toggle {
-            position: absolute;
-            top: 20px; left: 20px;
+            position: fixed; /* Fixed to stay on screen */
+            top: 20px; 
+            right: 20px; /* Right corner */
             background: var(--card-bg);
             border: 2px solid var(--btn-border);
             color: var(--text-main);
@@ -168,11 +169,14 @@
             display: flex; align-items: center; justify-content: center;
             cursor: pointer;
             font-size: 20px;
+            z-index: 9999; /* Force on top */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
 
+    <!-- Dark Mode Button -->
     <button class="theme-toggle" onclick="toggleTheme()">
         <i class="fas fa-moon" id="theme-icon"></i>
     </button>
@@ -187,7 +191,6 @@
         
         <span class="job-title">Civil Engineer | Junior Site Engineer</span>
 
-        <!-- BIO -->
         <p class="bio-text">
             Civil Engineering Graduate (Zagazig University '24).
         </p>
@@ -226,6 +229,7 @@
                 icon.className = 'fas fa-sun'; 
             }
         }
+        
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
