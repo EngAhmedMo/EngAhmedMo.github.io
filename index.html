@@ -20,7 +20,7 @@
 
     <style>
         :root {
-            /* COLOR PALETTE (Synced with CV) */
+            /* COLOR PALETTE */
             --primary-color: #1e2a38; /* Navy */
             --accent-color: #4682b4;  /* Steel Blue */
             --bg-color: #f0f4f8;      
@@ -30,6 +30,7 @@
             --btn-bg: #ffffff;
             --btn-border: #eee;
             --shadow: rgba(0,0,0,0.1);
+            --grid-line: rgba(30, 42, 56, 0.06); /* Subtle Navy Grid Lines */
         }
 
         /* Dark Theme */
@@ -43,13 +44,19 @@
             --btn-bg: #2d2d2d;
             --btn-border: #333;
             --shadow: rgba(0,0,0,0.5);
+            --grid-line: rgba(255, 255, 255, 0.05);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg-color);
-            background-image: radial-gradient(var(--text-sub) 0.5px, transparent 0.5px);
-            background-size: 20px 20px;
+            
+            /* ENGINEERING GRID RESTORED */
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 25px 25px; /* 2.5cm Grid Scale */
+            
             color: var(--text-main);
             margin: 0;
             padding: 20px;
@@ -59,22 +66,23 @@
             justify-content: center;
         }
 
-        /* --- THE BIG CARD (Original Layout) --- */
+        /* --- THE BIG CARD --- */
         .card-container {
             background-color: var(--card-bg);
             width: 100%;
-            max-width: 380px; /* Wide Width */
-            padding: 50px 30px; /* Spacious Padding */
+            max-width: 380px; 
+            padding: 50px 30px; 
             border-radius: 25px;
             box-shadow: 0 15px 35px var(--shadow);
             text-align: center;
             border-top: 6px solid var(--accent-color);
             position: relative;
+            backdrop-filter: blur(5px); /* Modern Glass effect */
         }
 
         /* Profile Image */
         .profile-wrapper {
-            width: 160px; /* Large Size */
+            width: 160px; 
             height: 160px;
             margin: 0 auto 25px;
             border-radius: 50%;
@@ -92,12 +100,11 @@
         /* TYPOGRAPHY */
         h1 {
             color: var(--primary-color);
-            font-size: 28px; /* Big & Bold */
+            font-size: 28px; 
             margin: 0 0 10px;
             font-weight: 800;
         }
 
-        /* Blue Title */
         .job-title {
             color: var(--accent-color);
             font-size: 18px;
@@ -108,7 +115,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* BIO TEXT (Restored) */
         .bio-text {
             color: var(--text-sub);
             font-size: 16px;
@@ -132,7 +138,7 @@
             background-color: var(--btn-bg);
             color: var(--text-main);
             text-decoration: none;
-            padding: 16px; /* Big Padding */
+            padding: 16px; 
             border-radius: 12px;
             border: 2px solid var(--btn-border);
             font-weight: 700;
@@ -147,20 +153,28 @@
             box-shadow: 0 5px 15px var(--shadow);
         }
 
+        /* Primary CV Button with PULSE */
         .link-btn.primary {
             background-color: var(--primary-color);
             color: #fff;
             border-color: var(--primary-color);
+            animation: pulse-shadow 2s infinite;
         }
         .link-btn.primary:hover { opacity: 0.95; }
 
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(70, 130, 180, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(70, 130, 180, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(70, 130, 180, 0); }
+        }
+
         .link-btn i { font-size: 20px; }
 
-        /* FIXED THEME TOGGLE (Visible on Mobile) */
+        /* FIXED THEME TOGGLE */
         .theme-toggle {
-            position: fixed; /* Fixed to stay on screen */
+            position: fixed; 
             top: 20px; 
-            right: 20px; /* Right corner */
+            right: 20px; 
             background: var(--card-bg);
             border: 2px solid var(--btn-border);
             color: var(--text-main);
@@ -169,7 +183,7 @@
             display: flex; align-items: center; justify-content: center;
             cursor: pointer;
             font-size: 20px;
-            z-index: 9999; /* Force on top */
+            z-index: 9999; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
     </style>
