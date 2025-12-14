@@ -222,20 +222,53 @@
             .controls { top: 10px; left: 10px; flex-direction: column; }
         }
 
-        /* --- PRINT SETTINGS --- */
+        /* --- MOBILE PRINT OPTIMIZATION --- */
         @media print {
-            body { background: none; padding: 0; }
-            .cv-container { box-shadow: none; border: none; margin: 0; width: 100%; max-width: 100%; padding: 0; }
+            @page {
+                size: A4;
+                margin: 0; /* Let body handle margins */
+            }
+            
+            html, body {
+                width: 210mm;
+                height: 100%;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white;
+            }
+
+            .cv-container { 
+                box-shadow: none; 
+                border: none; 
+                margin: 0 auto !important; 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                padding: 15mm !important; /* REDUCED PADDING FOR MOBILE */
+            }
+
             .controls, .footer-actions { display: none !important; }
-            .date-badge { color: #000 !important; border: 1px solid #000; background: none !important; }
+            
+            /* FORCE BLACK & WHITE */
+            body { -webkit-print-color-adjust: exact; }
             a { text-decoration: none; color: #000 !important; }
             
-            /* FORCE PAGE BREAK */
+            /* ANTI-SPLIT LOGIC */
+            .item, li, h2, p {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* FORCE PAGE BREAK FOR 2ND ITEM (If needed) */
             .print-break { 
                 page-break-before: always; 
                 break-before: page;
-                margin-top: 30px; 
+                margin-top: 20px; 
                 display: block;
+            }
+
+            /* MOBILE SCALING FIX */
+            body {
+                zoom: 92%; /* Shrinks content slightly to fit mobile A4 renderer */
             }
         }
     </style>
@@ -302,7 +335,7 @@
                     </ul>
                 </div>
 
-                <!-- ADDED CLASS: print-break to Arabic as well -->
+                <!-- Print Break for Arabic -->
                 <div class="item print-break">
                     <div class="item-header">
                         <span class="item-title">شركة القناة لتوزيع الكهرباء</span>
@@ -387,7 +420,7 @@
                     </ul>
                 </div>
 
-                <!-- ADDED CLASS: print-break -->
+                <!-- Print Break for English -->
                 <div class="item print-break">
                     <div class="item-header">
                         <span class="item-title">Canal Electricity Distribution Company</span>
