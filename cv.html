@@ -525,12 +525,28 @@
                 margin: 10mm;
             }
 
+            /* FORCE LIGHT THEME FOR PRINTING */
+            :root {
+                --primary-color: #1e2a38 !important; 
+                --secondary-color: #4682b4 !important; 
+                --accent-color: #4682b4 !important;
+                --text-color: #2c3e50 !important;
+                --text-light: #555 !important;
+                --bg-color: #fff !important; 
+                --container-bg: #fff !important;
+                --border-color: #e0e0e0 !important;
+                --header-border: #1e2a38 !important;
+            }
+
             body {
-                background: none !important;
+                background: white !important;
+                color: black !important;
                 margin: 0;
                 padding: 0;
                 zoom: 90%;
                 min-height: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
 
             .cv-container { 
@@ -543,6 +559,7 @@
                 border-top: 2px solid #1e2a38 !important;
                 border-radius: 0 !important;
                 animation: none !important;
+                background: white !important;
             }
 
             .controls, .footer-actions { display: none !important; }
@@ -562,6 +579,7 @@
             .item, li, p, h2 { 
                 page-break-inside: avoid; 
                 break-inside: avoid; 
+                color: #000 !important;
             }
             
             .item:hover,
@@ -611,7 +629,6 @@
                     <span>الشرقية، مصر <i class="fas fa-map-marker-alt"></i></span>
                     <span dir="ltr">01012489813 <i class="fas fa-phone-alt"></i></span>
                     
-                    <!-- EMAIL FIXED: Plain Text -->
                     <span>
                         engahmedmohammed00@gmail.com 
                         <i class="fas fa-envelope"></i>
@@ -701,7 +718,6 @@
                     <span><i class="fas fa-map-marker-alt"></i> Sharkia, Egypt</span>
                     <span><i class="fas fa-phone-alt"></i> +20 101 248 9813</span>
                     
-                    <!-- EMAIL FIXED: Plain Text -->
                     <span>
                         <i class="fas fa-envelope"></i> 
                         engahmedmohammed00@gmail.com
@@ -795,21 +811,23 @@
 
     </div>
 
-    <!-- REMOVED EMAIL DECODE SCRIPT -->
     <script>
         // PREVENT TRANSITION FLASH ON PAGE LOAD
         document.body.classList.add('no-transition');
-        
-        function toggleLanguage() {
-            const htmlTag = document.getElementById('main-html');
-            const arDiv = document.getElementById('cv-ar');
-            const enDiv = document.getElementById('cv-en');
-            const btnText = document.getElementById('btn-text');
-            const txtPdf = document.getElementById('txt-pdf');
-            const txtBack = document.getElementById('txt-back');
-            const controls = document.querySelector('.controls');
 
-            if (arDiv.style.display === 'none') {
+        // --- GLOBAL VARIABLES ---
+        const htmlTag = document.getElementById('main-html');
+        const arDiv = document.getElementById('cv-ar');
+        const enDiv = document.getElementById('cv-en');
+        const btnText = document.getElementById('btn-text');
+        const txtPdf = document.getElementById('txt-pdf');
+        const txtBack = document.getElementById('txt-back');
+        const controls = document.querySelector('.controls');
+        
+        // --- HELPER FUNCTIONS ---
+
+        function setLanguage(lang) {
+            if (lang === 'ar') {
                 // Switch to Arabic
                 arDiv.style.display = 'block';
                 enDiv.style.display = 'none';
@@ -817,9 +835,9 @@
                 btnText.innerText = "Switch to English";
                 controls.style.left = '20px'; 
                 controls.style.right = 'auto';
-                
                 txtPdf.innerText = "حفظ PDF / طباعة";
                 txtBack.innerText = "العودة للرئيسية";
+                localStorage.setItem('lang', 'ar');
             } else {
                 // Switch to English
                 arDiv.style.display = 'none';
@@ -828,10 +846,16 @@
                 btnText.innerText = "التبديل للعربية";
                 controls.style.right = '20px'; 
                 controls.style.left = 'auto';
-                
                 txtPdf.innerText = "Save as PDF / Print";
                 txtBack.innerText = "Back to Home";
+                localStorage.setItem('lang', 'en');
             }
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('lang') || 'ar';
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            setLanguage(newLang);
         }
 
         function toggleTheme() {
@@ -849,14 +873,22 @@
             }
         }
 
-        // LOAD SAVED THEME
+        // --- INITIALIZATION ---
+        
+        // 1. Load Saved Theme
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('theme-icon').className = 'fas fa-sun';
         }
+
+        // 2. Load Saved Language (NEW FEATURE)
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang) {
+            setLanguage(savedLang);
+        }
         
-        // ENABLE TRANSITIONS AFTER PAGE LOAD
+        // 3. Enable Transitions after load
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.body.classList.remove('no-transition');
