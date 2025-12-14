@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta property="og:title" content="Ahmed Amer | Civil Engineer">
-    <meta property="og:image" content="profile.jpg">
     <title>Ahmed Amer | Contact</title>
-    
     <link rel="icon" type="image/jpg" href="profile.jpg">
     
     <style>
@@ -17,50 +13,39 @@
 
     <style>
         :root {
-            /* COLOR PALETTE */
-            --primary-color: #1e2a38; /* Navy */
-            --accent-color: #4682b4;  /* Steel Blue */
-            --accent-light: #6ba3d1; /* Light Steel Blue */
+            /* COLORS */
+            --primary-color: #1e2a38; 
+            
+            /* تم تعديل هذا اللون ليطابق الصورة المرفقة تماماً */
+            --accent-color: #316099; 
+            
             --bg-color: #f0f4f8;      
             --card-bg: #ffffff;
             --text-main: #1a2a3a;
-            --text-sub: #666; 
-            --btn-bg: #ffffff;
-            --btn-border: #eee;
+            --text-sub: #555; 
             --shadow: rgba(0,0,0,0.1);
             --grid-line: rgba(30, 42, 56, 0.06);
-            --gradient-start: rgba(70, 130, 180, 0.05);
-            --gradient-end: rgba(70, 130, 180, 0.02);
         }
 
-        /* Dark Theme */
         [data-theme="dark"] {
             --primary-color: #90caf9;
-            --accent-color: #64b5f6;
-            --accent-light: #42a5f5;
+            /* لون فاتح قليلاً للوضع الليلي لضمان التباين */
+            --accent-color: #63b3ed;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --text-main: #ffffff;
             --text-sub: #bbbbbb;
-            --btn-bg: #2d2d2d;
-            --btn-border: #333;
             --shadow: rgba(0,0,0,0.5);
             --grid-line: rgba(255, 255, 255, 0.05);
-            --gradient-start: rgba(100, 181, 246, 0.08);
-            --gradient-end: rgba(100, 181, 246, 0.03);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg-color);
-            
-            /* ENGINEERING GRID + SUBTLE GRADIENT */
             background-image: 
-                linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%),
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 100% 100%, 25px 25px, 25px 25px;
-            
+            background-size: 25px 25px;
             color: var(--text-main);
             margin: 0;
             padding: 20px;
@@ -68,27 +53,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
-            /* SMOOTH ANIMATIONS */
             transition: background-color 0.3s ease;
         }
 
-        /* CARD CONTAINER */
+        /* MAIN CARD */
         .card-container {
             background-color: var(--card-bg);
             width: 100%;
             max-width: 380px; 
-            padding: 50px 30px; 
+            padding: 50px 30px 40px; 
             border-radius: 25px;
-            box-shadow: 0 15px 35px var(--shadow), 
-                        0 5px 15px rgba(70, 130, 180, 0.1);
+            box-shadow: 0 15px 35px var(--shadow);
             text-align: center;
-            border-top: 6px solid var(--accent-color);
             position: relative;
-            backdrop-filter: blur(5px);
+            
+            /* الشريط العلوي يأخذ اللون الجديد */
+            border-top: 10px solid var(--accent-color);
             
             animation: fadeInUp 0.6s ease-out;
-            transition: all 0.3s ease;
+            margin-top: 10px;
         }
 
         @keyframes fadeInUp {
@@ -96,28 +79,37 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* PROFILE IMAGE */
+        /* PROFILE */
         .profile-wrapper {
-            width: 160px; 
-            height: 160px;
-            margin: 0 auto 25px;
+            width: 150px; 
+            height: 150px;
+            margin: 10px auto 20px; 
             border-radius: 50%;
-            padding: 5px;
-            background: var(--card-bg);
-            border: 3px solid var(--accent-color);
-            box-shadow: 0 8px 20px var(--shadow);
-            transition: all 0.3s ease;
-            animation: fadeInScale 0.8s ease-out 0.2s backwards;
+            padding: 6px;
+            background: transparent;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+        .profile-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            
+            /* الحلقة الدوارة تأخذ اللون الجديد */
+            border-top-color: var(--accent-color);
+            border-right-color: var(--accent-color);
+            
+            animation: spinRing 3s linear infinite;
         }
 
-        .profile-wrapper:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px var(--shadow);
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .profile-img {
@@ -125,251 +117,184 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 5px 15px var(--shadow);
         }
 
-        .profile-wrapper:hover .profile-img {
-            transform: scale(1.05);
-        }
-
-        /* TYPOGRAPHY */
+        /* TEXT */
         h1 {
-            color: var(--primary-color);
-            font-size: 28px; 
-            margin: 0 0 10px;
+            color: var(--text-main);
+            font-size: 26px; 
+            margin: 0 0 5px;
             font-weight: 800;
-            animation: fadeIn 0.6s ease-out 0.3s backwards;
-            transition: color 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .job-title {
+            /* المسمى الوظيفي يأخذ اللون الجديد */
             color: var(--accent-color);
-            font-size: 18px;
-            margin: 0 0 10px;
+            font-size: 15px;
             font-weight: 700;
+            margin-bottom: 5px;
             display: block;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            animation: fadeIn 0.6s ease-out 0.4s backwards;
-            transition: color 0.3s ease;
         }
 
         .bio-text {
             color: var(--text-sub);
-            font-size: 16px;
-            margin: 0 0 35px;
+            font-size: 14px;
+            margin: 0 0 30px;
             font-weight: 600;
-            line-height: 1.5;
-            animation: fadeIn 0.6s ease-out 0.5s backwards;
-            transition: color 0.3s ease;
         }
 
         /* BUTTONS */
         .links-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .link-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            background-color: var(--btn-bg);
-            color: var(--text-main);
+            gap: 10px;
             text-decoration: none;
-            padding: 16px; 
+            padding: 14px; 
             border-radius: 12px;
-            border: 2px solid var(--btn-border);
             font-weight: 700;
             font-size: 16px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             position: relative;
             overflow: hidden;
-            animation: slideInRight 0.5s ease-out backwards;
+            border: none;
+            color: #fff;
         }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .link-btn:nth-child(1) { animation-delay: 0.6s; }
-        .link-btn:nth-child(2) { animation-delay: 0.7s; }
-        .link-btn:nth-child(3) { animation-delay: 0.8s; }
-        .link-btn:nth-child(4) { animation-delay: 0.9s; }
-
-        .link-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(70, 130, 180, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .link-btn:hover::before { left: 100%; }
 
         .link-btn:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px var(--shadow);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
-        .link-btn:active { transform: translateY(-1px); }
+        .link-btn i { font-size: 18px; }
 
-        .link-btn.primary {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+        .btn-cv {
+            background-color: #1e2a38;
             color: #fff;
-            border-color: var(--primary-color);
-            animation: pulse-shadow 2s infinite, slideInRight 0.5s ease-out 0.6s backwards;
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(49, 96, 153, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(49, 96, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(49, 96, 153, 0); }
         }
 
-        .link-btn.primary:hover { 
-            opacity: 0.95;
-            transform: translateY(-3px) scale(1.02);
+        .btn-linkedin { background-color: #0077b5; }
+        .btn-whatsapp { background-color: #25D366; }
+
+        .btn-email {
+            background-color: transparent;
+            border: 2px solid #ccc;
+            color: var(--text-main);
+        }
+        
+        [data-theme="dark"] .btn-email {
+            border-color: #444;
+            color: #fff;
         }
 
-        @keyframes pulse-shadow {
-            0% { box-shadow: 0 0 0 0 rgba(70, 130, 180, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(70, 130, 180, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(70, 130, 180, 0); }
+        .btn-email:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(49, 96, 153, 0.05);
         }
 
-        .link-btn i { 
-            font-size: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .link-btn:hover i { transform: scale(1.2) rotate(5deg); }
+        .email-icon { color: #ea4335 !important; }
 
         /* THEME TOGGLE */
         .theme-toggle {
-            position: fixed; 
-            top: 20px; 
-            right: 20px; 
-            background: var(--card-bg);
-            border: 2px solid var(--btn-border);
-            color: var(--text-main);
-            width: 50px; 
-            height: 50px;
-            border-radius: 50%;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
+            position: absolute;
+            top: 25px; 
+            right: 20px;
+            background: rgba(0,0,0,0.05); 
+            border: none;
+            color: var(--text-sub);
+            font-size: 20px;
             cursor: pointer;
-            font-size: 22px; 
-            z-index: 9999; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            animation: fadeInScale 0.6s ease-out 1s backwards;
+            z-index: 100; 
+            width: 40px;  
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1) rotate(20deg);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-            border-color: var(--accent-color);
+            background: rgba(0,0,0,0.1);
         }
-
-        .theme-toggle:active { transform: scale(0.95); }
-
-        .theme-toggle i { transition: transform 0.3s ease; }
-
-        /* RESPONSIVE */
-        @media (max-width: 480px) {
-            .card-container { padding: 40px 25px; max-width: 100%; }
-            h1 { font-size: 24px; }
-            .job-title { font-size: 16px; }
-            .bio-text { font-size: 14px; }
-            .profile-wrapper { width: 140px; height: 140px; }
-            .theme-toggle { width: 45px; height: 45px; font-size: 20px; }
-        }
-
-        /* TRANSITION UTILS */
-        * { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
-        .no-transition * { transition: none !important; }
     </style>
 </head>
 <body>
 
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon" id="theme-icon"></i>
-    </button>
-
     <div class="card-container">
         
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+
         <div class="profile-wrapper">
-            <img src="profile.jpg" alt="Ahmed Amer Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+            <img src="profile.jpg" alt="Ahmed Amer" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
         </div>
 
         <h1>أحمد محمد صلاح عامر</h1>
-        
         <span class="job-title">Civil Engineer | Junior Site Engineer</span>
-
-        <p class="bio-text">
-            Civil Engineering Graduate (Zagazig University '24)
-        </p>
+        <p class="bio-text">Civil Engineering Graduate (Zagazig University '24)</p>
 
         <div class="links-group">
-            <a href="cv.html" class="link-btn primary" aria-label="View CV">
-                <i class="fas fa-file-alt"></i> CV
+            <a href="cv.html" class="link-btn btn-cv">
+                <i class="fas fa-file-alt"></i> View My CV
             </a>
-
-            <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank" rel="noopener noreferrer" class="link-btn" aria-label="LinkedIn Profile">
-                <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
+            <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank" class="link-btn btn-linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn Profile
             </a>
-
-            <a href="https://wa.me/201012489813" target="_blank" rel="noopener noreferrer" class="link-btn" aria-label="WhatsApp Contact">
-                <i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp
+            <a href="https://wa.me/201012489813" target="_blank" class="link-btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
-
-            <a href="mailto:engahmedmohammed00@gmail.com" class="link-btn" aria-label="Send Email">
-                <i class="fas fa-envelope" style="color: #ea4335;"></i> Email Me
+            <a href="mailto:engahmedmohammed00@gmail.com" class="link-btn btn-email">
+                <i class="fas fa-envelope email-icon"></i> Email Me
             </a>
         </div>
-
     </div>
 
     <script>
-        // PREVENT TRANSITION FLASH ON PAGE LOAD
-        document.body.classList.add('no-transition');
-        
         function toggleTheme() {
             const html = document.documentElement;
             const icon = document.getElementById('theme-icon');
+            const currentTheme = html.getAttribute('data-theme');
             
-            if (html.getAttribute('data-theme') === 'dark') {
+            if (currentTheme === 'dark') {
                 html.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'light');
-                icon.className = 'fas fa-moon'; 
+                if(icon) icon.className = 'fas fa-moon'; 
             } else {
                 html.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
-                icon.className = 'fas fa-sun'; 
+                if(icon) icon.className = 'fas fa-sun'; 
             }
         }
-        
-        // LOAD SAVED THEME
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('theme-icon').className = 'fas fa-sun';
-        }
-        
-        // ENABLE TRANSITIONS AFTER PAGE LOAD
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.body.classList.remove('no-transition');
-            }, 100);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const icon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                if(icon) icon.className = 'fas fa-sun';
+            } else {
+                if(icon) icon.className = 'fas fa-moon';
+            }
         });
     </script>
 </body>
