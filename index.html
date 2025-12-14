@@ -16,8 +16,8 @@
             /* COLORS */
             --primary-color: #1e2a38; 
             
-            /* تم تعديل هذا اللون ليطابق الصورة المرفقة تماماً */
-            --accent-color: #316099; 
+            /* تعديل 1: درجة لون أفتح للشريط والعناصر الملونة */
+            --accent-color: #4F8FC0; 
             
             --bg-color: #f0f4f8;      
             --card-bg: #ffffff;
@@ -29,7 +29,6 @@
 
         [data-theme="dark"] {
             --primary-color: #90caf9;
-            /* لون فاتح قليلاً للوضع الليلي لضمان التباين */
             --accent-color: #63b3ed;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -67,8 +66,8 @@
             text-align: center;
             position: relative;
             
-            /* الشريط العلوي يأخذ اللون الجديد */
-            border-top: 10px solid var(--accent-color);
+            /* تعديل 2: تقليل سمك الشريط العلوي ليصبح أرفع (7px بدلاً من 10px) */
+            border-top: 7px solid var(--accent-color);
             
             animation: fadeInUp 0.6s ease-out;
             margin-top: 10px;
@@ -100,7 +99,7 @@
             border-radius: 50%;
             border: 3px solid transparent;
             
-            /* الحلقة الدوارة تأخذ اللون الجديد */
+            /* الحلقة الدوارة تأخذ اللون الأفتح الجديد */
             border-top-color: var(--accent-color);
             border-right-color: var(--accent-color);
             
@@ -130,7 +129,7 @@
         }
 
         .job-title {
-            /* المسمى الوظيفي يأخذ اللون الجديد */
+            /* المسمى الوظيفي يأخذ اللون الأفتح الجديد */
             color: var(--accent-color);
             font-size: 15px;
             font-weight: 700;
@@ -185,9 +184,9 @@
         }
         
         @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(49, 96, 153, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(49, 96, 153, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(49, 96, 153, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(79, 143, 192, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(79, 143, 192, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(79, 143, 192, 0); }
         }
 
         .btn-linkedin { background-color: #0077b5; }
@@ -206,7 +205,7 @@
 
         .btn-email:hover {
             border-color: var(--accent-color);
-            background-color: rgba(49, 96, 153, 0.05);
+            background-color: rgba(79, 143, 192, 0.05);
         }
 
         .email-icon { color: #ea4335 !important; }
