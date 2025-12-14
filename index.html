@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & Identity -->
     <meta property="og:title" content="Ahmed Amer | Civil Engineer">
     <meta property="og:image" content="profile.jpg">
     <title>Ahmed Amer | Contact</title>
     
-    <!-- FAVICON -->
     <link rel="icon" type="image/jpg" href="profile.jpg">
     
-    <!-- Fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
     </style>
@@ -23,7 +20,7 @@
             /* COLOR PALETTE */
             --primary-color: #1e2a38; /* Navy */
             --accent-color: #4682b4;  /* Steel Blue */
-            --accent-light: #6ba3d1; /* Light Steel Blue - NEW */
+            --accent-light: #6ba3d1; /* Light Steel Blue */
             --bg-color: #f0f4f8;      
             --card-bg: #ffffff;
             --text-main: #1a2a3a;
@@ -31,9 +28,9 @@
             --btn-bg: #ffffff;
             --btn-border: #eee;
             --shadow: rgba(0,0,0,0.1);
-            --grid-line: rgba(30, 42, 56, 0.06); /* Subtle Navy Grid Lines */
-            --gradient-start: rgba(70, 130, 180, 0.05); /* NEW */
-            --gradient-end: rgba(70, 130, 180, 0.02); /* NEW */
+            --grid-line: rgba(30, 42, 56, 0.06);
+            --gradient-start: rgba(70, 130, 180, 0.05);
+            --gradient-end: rgba(70, 130, 180, 0.02);
         }
 
         /* Dark Theme */
@@ -62,7 +59,7 @@
                 linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%),
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 100% 100%, 25px 25px, 25px 25px; /* 2.5cm Grid Scale */
+            background-size: 100% 100%, 25px 25px, 25px 25px;
             
             color: var(--text-main);
             margin: 0;
@@ -76,7 +73,7 @@
             transition: background-color 0.3s ease;
         }
 
-        /* --- THE BIG CARD WITH ENHANCEMENTS --- */
+        /* CARD CONTAINER */
         .card-container {
             background-color: var(--card-bg);
             width: 100%;
@@ -84,32 +81,22 @@
             padding: 50px 30px; 
             border-radius: 25px;
             box-shadow: 0 15px 35px var(--shadow), 
-                        0 5px 15px rgba(70, 130, 180, 0.1); /* ENHANCED SHADOW */
+                        0 5px 15px rgba(70, 130, 180, 0.1);
             text-align: center;
             border-top: 6px solid var(--accent-color);
             position: relative;
-            backdrop-filter: blur(5px); /* Modern Glass effect */
+            backdrop-filter: blur(5px);
             
-            /* SMOOTH FADE-IN ANIMATION */
             animation: fadeInUp 0.6s ease-out;
-            
-            /* SMOOTH TRANSITIONS */
             transition: all 0.3s ease;
         }
 
-        /* FADE-IN ANIMATION */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Profile Image WITH ENHANCED ANIMATION */
+        /* PROFILE IMAGE */
         .profile-wrapper {
             width: 160px; 
             height: 160px;
@@ -119,23 +106,13 @@
             background: var(--card-bg);
             border: 3px solid var(--accent-color);
             box-shadow: 0 8px 20px var(--shadow);
-            
-            /* SMOOTH TRANSITIONS */
             transition: all 0.3s ease;
-            
-            /* DELAYED ANIMATION */
             animation: fadeInScale 0.8s ease-out 0.2s backwards;
         }
 
         @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .profile-wrapper:hover {
@@ -155,7 +132,7 @@
             transform: scale(1.05);
         }
 
-        /* TYPOGRAPHY WITH STAGGERED ANIMATION */
+        /* TYPOGRAPHY */
         h1 {
             color: var(--primary-color);
             font-size: 28px; 
@@ -192,7 +169,7 @@
             transition: color 0.3s ease;
         }
 
-        /* BUTTONS WITH ENHANCED EFFECTS */
+        /* BUTTONS */
         .links-group {
             display: flex;
             flex-direction: column;
@@ -212,33 +189,23 @@
             border: 2px solid var(--btn-border);
             font-weight: 700;
             font-size: 16px;
-            transition: all 0.3s ease; /* ENHANCED TIMING */
+            transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            
-            /* STAGGERED ANIMATION FOR BUTTONS */
             animation: slideInRight 0.5s ease-out backwards;
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* STAGGER DELAYS FOR EACH BUTTON */
         .link-btn:nth-child(1) { animation-delay: 0.6s; }
         .link-btn:nth-child(2) { animation-delay: 0.7s; }
         .link-btn:nth-child(3) { animation-delay: 0.8s; }
         .link-btn:nth-child(4) { animation-delay: 0.9s; }
 
-        /* ENHANCED HOVER WITH GRADIENT OVERLAY */
         .link-btn::before {
             content: '';
             position: absolute;
@@ -250,23 +217,18 @@
             transition: left 0.5s ease;
         }
 
-        .link-btn:hover::before {
-            left: 100%;
-        }
+        .link-btn:hover::before { left: 100%; }
 
         .link-btn:hover {
             border-color: var(--accent-color);
-            transform: translateY(-3px); /* ENHANCED */
-            box-shadow: 0 8px 20px var(--shadow); /* ENHANCED */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow);
         }
 
-        .link-btn:active {
-            transform: translateY(-1px);
-        }
+        .link-btn:active { transform: translateY(-1px); }
 
-        /* Primary CV Button with ENHANCED PULSE */
         .link-btn.primary {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); /* GRADIENT */
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
             color: #fff;
             border-color: var(--primary-color);
             animation: pulse-shadow 2s infinite, slideInRight 0.5s ease-out 0.6s backwards;
@@ -274,7 +236,7 @@
 
         .link-btn.primary:hover { 
             opacity: 0.95;
-            transform: translateY(-3px) scale(1.02); /* ENHANCED */
+            transform: translateY(-3px) scale(1.02);
         }
 
         @keyframes pulse-shadow {
@@ -285,14 +247,12 @@
 
         .link-btn i { 
             font-size: 20px;
-            transition: transform 0.3s ease; /* ICON ANIMATION */
+            transition: transform 0.3s ease;
         }
 
-        .link-btn:hover i {
-            transform: scale(1.2) rotate(5deg); /* ENHANCED ICON EFFECT */
-        }
+        .link-btn:hover i { transform: scale(1.2) rotate(5deg); }
 
-        /* FIXED THEME TOGGLE WITH ENHANCED EFFECTS */
+        /* THEME TOGGLE */
         .theme-toggle {
             position: fixed; 
             top: 20px; 
@@ -300,75 +260,47 @@
             background: var(--card-bg);
             border: 2px solid var(--btn-border);
             color: var(--text-main);
-            width: 50px; /* SLIGHTLY BIGGER */
+            width: 50px; 
             height: 50px;
             border-radius: 50%;
             display: flex; 
             align-items: center; 
             justify-content: center;
             cursor: pointer;
-            font-size: 22px; /* BIGGER ICON */
+            font-size: 22px; 
             z-index: 9999; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            
-            /* SMOOTH TRANSITIONS */
             transition: all 0.3s ease;
-            
-            /* FADE IN ANIMATION */
             animation: fadeInScale 0.6s ease-out 1s backwards;
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1) rotate(20deg); /* ENHANCED ROTATION */
+            transform: scale(1.1) rotate(20deg);
             box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             border-color: var(--accent-color);
         }
 
-        .theme-toggle:active {
-            transform: scale(0.95);
-        }
+        .theme-toggle:active { transform: scale(0.95); }
 
-        .theme-toggle i {
-            transition: transform 0.3s ease;
-        }
+        .theme-toggle i { transition: transform 0.3s ease; }
 
-        /* RESPONSIVE DESIGN */
+        /* RESPONSIVE */
         @media (max-width: 480px) {
-            .card-container {
-                padding: 40px 25px;
-                max-width: 100%;
-            }
-            
+            .card-container { padding: 40px 25px; max-width: 100%; }
             h1 { font-size: 24px; }
             .job-title { font-size: 16px; }
             .bio-text { font-size: 14px; }
-            
-            .profile-wrapper {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .theme-toggle {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
+            .profile-wrapper { width: 140px; height: 140px; }
+            .theme-toggle { width: 45px; height: 45px; font-size: 20px; }
         }
 
-        /* SMOOTH TRANSITIONS FOR THEME CHANGE */
-        * {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
-        /* PREVENT TRANSITION ON PAGE LOAD */
-        .no-transition * {
-            transition: none !important;
-        }
+        /* TRANSITION UTILS */
+        * { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        .no-transition * { transition: none !important; }
     </style>
 </head>
 <body>
 
-    <!-- Dark Mode Button -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
         <i class="fas fa-moon" id="theme-icon"></i>
     </button>
@@ -400,14 +332,14 @@
                 <i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp
             </a>
 
-            <a href="/cdn-cgi/l/email-protection#b0d5ded7d1d8ddd5d4dddfd8d1ddddd5d48080f0d7ddd1d9dc9ed3dfdd" class="link-btn" aria-label="Send Email">
+            <a href="mailto:engahmedmohammed00@gmail.com" class="link-btn" aria-label="Send Email">
                 <i class="fas fa-envelope" style="color: #ea4335;"></i> Email Me
             </a>
         </div>
 
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // PREVENT TRANSITION FLASH ON PAGE LOAD
         document.body.classList.add('no-transition');
         
