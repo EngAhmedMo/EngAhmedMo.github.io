@@ -18,38 +18,38 @@
 
         :root {
             /* PALETTE */
-            --primary-color: #1e2a38; 
-            --secondary-color: #4682b4; 
-            --accent-color: #4682b4;
-            --accent-light: #6ba3d1;
+            --primary-color: #0f172a; 
+            --secondary-color: #2563eb; 
+            --accent-color: #3b82f6;
+            --accent-light: #60a5fa;
             
-            --text-color: #2c3e50;
-            --text-light: #555;
-            --bg-color: #f0f4f8; 
-            --container-bg: #fff;
-            --border-color: #e0e0e0;
-            --shadow: rgba(0,0,0,0.08);
-            --header-border: #1e2a38;
-            --grid-line: rgba(30, 42, 56, 0.06);
-            --gradient-start: rgba(70, 130, 180, 0.05);
-            --gradient-end: rgba(70, 130, 180, 0.02);
+            --text-color: #0f172a;
+            --text-light: #475569;
+            --bg-color: #f8fafc; 
+            --container-bg: #ffffff;
+            --border-color: #cbd5e1;
+            --shadow: rgba(15, 23, 42, 0.05);
+            --header-border: #0f172a;
+            --grid-line: rgba(15, 23, 42, 0.03);
+            --gradient-start: rgba(37, 99, 235, 0.03);
+            --gradient-end: rgba(37, 99, 235, 0.01);
         }
 
-        /* Dark Theme */
+        /* Dark Theme - Replicated precisely from image_9744c3.png */
         [data-theme="dark"] {
-            --primary-color: #90caf9;
-            --secondary-color: #64b5f6;
-            --accent-color: #64b5f6;
-            --accent-light: #42a5f5;
-            --text-color: #e0e0e0;
-            --text-light: #bbbbbb;
-            --bg-color: #121212;
-            --container-bg: #1e1e1e;
-            --border-color: #333;
-            --header-border: #90caf9;
-            --grid-line: rgba(255, 255, 255, 0.05);
-            --gradient-start: rgba(100, 181, 246, 0.08);
-            --gradient-end: rgba(100, 181, 246, 0.03);
+            --primary-color: #60a5fa; /* Bright vivid sky blue for main name and titles */
+            --secondary-color: #93c5fd; /* Soft cyan blue for role subtitle and sub-sections */
+            --accent-color: #3b82f6; /* Accent blue for links and icons */
+            --accent-light: #2563eb;
+            --text-color: #f1f5f9; /* Off-white for high-contrast legible body text */
+            --text-light: #cbd5e1; /* Light gray for contacts, badges and non-primary details */
+            --bg-color: #0b0f19; /* Deep slate blueprint body background */
+            --container-bg: #1c1c1e; /* Smooth solid Matte Charcoal/Black for the CV card */
+            --border-color: #2d3748; /* Soft dark border separators */
+            --header-border: #60a5fa; /* Glowing sky blue top border matching the screenshot */
+            --grid-line: rgba(255, 255, 255, 0.025); /* Ultra-precise blueprints engineering grid overlay */
+            --gradient-start: rgba(59, 130, 246, 0.04);
+            --gradient-end: rgba(59, 130, 246, 0.01);
         }
 
         body {
@@ -58,16 +58,16 @@
                 linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%),
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 100% 100%, 25px 25px, 25px 25px;
+            background-size: 100% 100%, 20px 20px, 20px 20px;
             color: var(--text-color);
             margin: 0;
-            padding: 60px 20px;
+            padding: 40px 20px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             font-family: 'Tajawal', sans-serif;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.15s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         /* CV CONTAINER */
@@ -75,19 +75,18 @@
             max-width: 210mm;
             width: 100%;
             background: var(--container-bg);
-            padding: 50px 60px;
-            box-shadow: 0 15px 35px var(--shadow), 
-                        0 5px 15px rgba(70, 130, 180, 0.1); 
+            padding: 40px 45px;
+            box-shadow: 0 10px 30px var(--shadow), 
+                        0 1px 3px rgba(37, 99, 235, 0.02); 
             border-top: 6px solid var(--header-border);
             border-radius: 8px; 
             position: relative;
-            margin-bottom: 50px;
-            animation: fadeInUp 0.6s ease-out;
-            transition: all 0.15s ease;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.4s ease-out;
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -95,340 +94,307 @@
         .controls {
             position: fixed;
             top: 20px; left: 20px; z-index: 1000;
-            display: flex; gap: 10px;
-            animation: fadeIn 0.6s ease-out 0.3s backwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            display: flex; gap: 8px;
         }
 
         .btn-float {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); 
             color: #fff;
             border: none;
-            padding: 12px 22px; 
-            border-radius: 30px;
+            padding: 8px 16px; 
+            border-radius: 20px;
             cursor: pointer;
             font-family: inherit;
             font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            display: flex; align-items: center; gap: 8px;
-            font-size: 14px;
-            transition: all 0.15s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex; align-items: center; gap: 6px;
+            font-size: 12px;
+            transition: all 0.2s ease;
         }
 
         .btn-float:hover {
-            transform: translateY(-2px) scale(1.03); 
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-
-        .btn-float:active {
-            transform: translateY(0) scale(0.98);
+            transform: translateY(-1px); 
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
         }
 
         .theme-btn {
             background: var(--container-bg) !important; 
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
-            padding: 10px; 
-            width: 50px; 
-            height: 50px;
+            padding: 8px; 
+            width: 36px; 
+            height: 36px;
+            border-radius: 50%;
             justify-content: center;
         }
 
-        .theme-btn:hover {
-            transform: scale(1.1) rotate(20deg); 
-            border-color: var(--accent-color);
-        }
-
         /* TEXT & SECTIONS */
-        .cv-ar { font-family: 'Tajawal', sans-serif; line-height: 1.8; }
-        .cv-en { font-family: 'Roboto', sans-serif; line-height: 1.7; display: none; }
+        .cv-ar { font-family: 'Tajawal', sans-serif; line-height: 1.6; }
+        .cv-en { font-family: 'Roboto', sans-serif; line-height: 1.5; display: none; }
 
         header { 
             text-align: center; 
-            margin-bottom: 40px; 
+            margin-bottom: 25px; 
             border-bottom: 2px solid var(--border-color); 
-            padding-bottom: 25px;
-            animation: fadeIn 0.6s ease-out 0.4s backwards;
+            padding-bottom: 15px;
         }
         
         h1 { 
             color: var(--primary-color); 
-            margin: 0 0 10px 0; 
-            font-size: 36px; 
-            text-transform: uppercase; 
+            margin: 0 0 5px 0; 
+            font-size: 26px; 
             font-weight: 800;
-            transition: color 0.15s ease;
+            letter-spacing: -0.5px;
         }
         
         .job-role { 
-            font-size: 22px; 
+            font-size: 16px; 
             color: var(--secondary-color); 
             font-weight: 700; 
-            margin-bottom: 15px; 
+            margin-bottom: 10px; 
             display: block;
-            transition: color 0.15s ease;
         }
         
         .contact-info { 
-            font-size: 16px; 
+            font-size: 12px; 
             color: var(--text-light); 
             display: flex; 
             justify-content: center; 
-            gap: 20px; 
+            gap: 10px; 
             flex-wrap: wrap; 
             font-weight: 500;
+        }
+        
+        .contact-info span, .contact-info a {
+            background: var(--gradient-start);
+            padding: 3px 10px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .contact-info a { 
             text-decoration: none; 
             color: inherit;
-            transition: color 0.15s ease, transform 0.15s ease;
-            display: inline-block;
+            transition: all 0.2s ease;
         }
         
         .contact-info a:hover {
             color: var(--accent-color);
-            transform: translateY(-2px);
+            border-color: var(--accent-color);
         }
         
         .contact-info i { 
-            color: var(--primary-color); 
-            margin: 0 5px;
-            transition: transform 0.15s ease;
-        }
-        
-        .contact-info a:hover i {
-            transform: scale(1.2) rotate(5deg);
+            color: var(--secondary-color); 
         }
 
         .section { 
-            margin-bottom: 40px;
-            animation: fadeIn 0.6s ease-out backwards;
+            margin-bottom: 20px;
         }
-        
-        .section:nth-of-type(1) { animation-delay: 0.5s; }
-        .section:nth-of-type(2) { animation-delay: 0.6s; }
-        .section:nth-of-type(3) { animation-delay: 0.7s; }
-        .section:nth-of-type(4) { animation-delay: 0.8s; }
         
         h2 { 
             color: var(--primary-color); 
-            font-size: 24px; 
-            border-bottom: 3px solid var(--primary-color); 
-            padding-bottom: 8px; 
-            margin-bottom: 20px; 
+            font-size: 15px; 
+            padding-bottom: 4px; 
+            margin-top: 0;
+            margin-bottom: 10px; 
             display: flex; 
             align-items: center; 
             text-transform: uppercase; 
             font-weight: 800;
-            background: linear-gradient(to right, var(--primary-color) 0%, transparent 100%);
-            background-position: bottom;
-            background-size: 100% 3px;
-            background-repeat: no-repeat;
-            border-bottom: none;
-            transition: all 0.15s ease;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: auto;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .cv-en h2::after {
+            left: 0;
+            right: auto;
         }
         
         h2 i { 
             color: var(--secondary-color); 
-            font-size: 22px; 
-            margin: 0 10px;
-            transition: transform 0.15s ease;
-        }
-        
-        h2:hover i {
-            transform: scale(1.1) rotate(5deg);
+            font-size: 14px; 
+            margin: 0 6px;
         }
         
         p { 
-            margin-bottom: 15px; 
+            margin: 0 0 10px 0;
             text-align: justify; 
-            font-size: 18px; 
+            font-size: 13px; 
             color: var(--text-color);
             font-weight: 500;
-            transition: color 0.15s ease;
         }
 
         .item { 
-            margin-bottom: 25px;
-            padding: 15px;
-            border-radius: 8px;
-            transition: all 0.15s ease;
-        }
-        
-        .item:hover {
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-right: 2px solid var(--secondary-color);
             background-color: var(--gradient-start);
-            transform: translateX(-5px);
+        }
+
+        .cv-en .item {
+            border-right: none;
+            border-left: 2px solid var(--secondary-color);
         }
         
         .item-header { 
             display: flex; 
             justify-content: space-between; 
-            align-items: baseline; 
-            margin-bottom: 8px; 
+            align-items: center; 
+            margin-bottom: 4px; 
         }
         
         .item-title { 
-            font-size: 20px; 
+            font-size: 13px; 
             font-weight: 700; 
             color: var(--text-color);
-            transition: color 0.15s ease;
         }
         
         .date-badge { 
-            font-size: 14px; 
+            font-size: 10px; 
             font-weight: 700; 
             color: #fff; 
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-            padding: 6px 14px; 
-            border-radius: 20px; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: all 0.15s ease;
-        }
-        
-        .date-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            padding: 2px 8px; 
+            border-radius: 10px; 
         }
 
         .institution { 
-            font-size: 18px; 
+            font-size: 12px; 
             font-weight: 600; 
             color: var(--secondary-color);
-            transition: color 0.15s ease;
+            margin-bottom: 4px;
         }
         
         .details { 
-            margin-top: 8px; 
-            font-size: 17px; 
+            margin-top: 4px; 
+            font-size: 12px; 
             color: var(--text-color); 
             font-weight: 500;
-            line-height: 1.6;
-            transition: color 0.15s ease;
+            line-height: 1.5;
         }
         
         .grade-highlight {
-            color: var(--primary-color);
+            color: var(--accent-color);
             font-weight: 700;
         }
 
-        ul { margin: 0; list-style: none; }
+        ul { margin: 0; padding: 0; list-style: none; }
         
         li { 
             position: relative; 
-            margin-bottom: 12px; 
-            font-size: 18px; 
+            margin-bottom: 4px; 
+            font-size: 11.5px; 
             color: var(--text-color); 
             font-weight: 500;
-            transition: all 0.15s ease;
-            padding-right: 5px;
+            line-height: 1.4;
         }
         
-        li:hover {
-            transform: translateX(-3px);
-            color: var(--primary-color);
-        }
-        
-        .cv-ar ul { padding-right: 25px; }
+        .cv-ar ul { padding-right: 12px; }
         .cv-ar ul li::before { 
-            content: "●"; 
+            content: "■"; 
             color: var(--secondary-color); 
             position: absolute; 
-            right: -20px; 
-            font-size: 18px;
-            transition: transform 0.15s ease;
+            right: -10px; 
+            font-size: 7px;
+            top: 2px;
         }
         
-        li:hover::before {
-            transform: scale(1.3);
-        }
-        
-        .cv-en ul { padding-left: 25px; }
+        .cv-en ul { padding-left: 12px; }
         .cv-en ul li::before { 
-            content: "●"; 
+            content: "■"; 
             color: var(--secondary-color); 
             position: absolute; 
-            left: -20px; 
-            font-size: 18px;
+            left: -10px; 
+            font-size: 7px;
+            top: 1px;
         }
 
-        .grid-container { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px; 
+        /* SKILLS INTEGRATED TABLE GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
-        
-        .grid-col h3 { 
-            font-size: 20px; 
-            color: var(--secondary-color); 
-            margin-bottom: 15px; 
-            border-bottom: 2px dotted var(--border-color); 
-            padding-bottom: 8px;
+
+        .skills-card {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 10px 12px;
+            background-color: var(--gradient-start);
+        }
+
+        .skills-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 12.5px;
             font-weight: 700;
-            transition: all 0.15s ease;
+            color: var(--secondary-color);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 4px;
         }
-        
-        .grid-col h3:hover {
-            border-bottom-color: var(--accent-color);
-            color: var(--accent-light);
+
+        /* Tags container for quick tools presentation */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .tag-pill {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--primary-color);
+            background-color: var(--border-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.05);
+            font-family: 'Roboto', 'Tajawal', sans-serif;
         }
 
         /* Footer Actions */
         .footer-actions {
-            margin-top: 60px;
-            padding-top: 30px;
+            margin-top: 25px;
+            padding-top: 15px;
             border-top: 2px solid var(--border-color);
             display: flex;
             justify-content: center;
-            gap: 20px;
-            animation: fadeIn 0.6s ease-out 0.9s backwards;
+            gap: 10px;
         }
 
         .footer-btn {
             display: inline-flex; 
             align-items: center; 
-            gap: 10px;
+            gap: 6px;
             text-decoration: none;
             background-color: var(--bg-color);
             color: var(--primary-color);
-            padding: 16px 38px; 
-            border-radius: 10px; 
+            padding: 8px 18px; 
+            border-radius: 20px; 
             font-weight: 700;
             border: 2px solid var(--border-color);
-            transition: all 0.15s ease;
-            font-size: 16px;
+            font-size: 12px;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(70, 130, 180, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .footer-btn:hover::before {
-            left: 100%;
+            transition: all 0.2s ease;
         }
         
         .footer-btn:hover {
             background-color: var(--primary-color);
             color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--shadow);
-        }
-        
-        .footer-btn:active {
             transform: translateY(-1px);
         }
         
@@ -437,69 +403,39 @@
             color: #fff;
             border-color: var(--secondary-color);
         }
-        
-        .footer-btn.primary:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(70, 130, 180, 0.4);
-        }
-        
-        .footer-btn i {
-            transition: transform 0.15s ease;
-        }
-        
-        .footer-btn:hover i {
-            transform: scale(1.2) rotate(5deg);
-        }
 
         /* Responsive */
         @media (max-width: 600px) {
-            .grid-container { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
             .cv-container { 
-                padding: 30px 20px;
+                padding: 20px 15px;
                 border-radius: 0;
             }
-            .item-header { flex-direction: column; gap: 5px; }
+            .item-header { flex-direction: column; align-items: flex-start; gap: 3px; }
             .controls { 
                 top: 10px; 
                 left: 10px; 
                 flex-direction: column; 
             }
-            .footer-actions {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .footer-btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* THEME TRANSITIONS */
-        * {
-            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .no-transition * {
-            transition: none !important;
         }
 
         /* PRINT STYLES */
         @media print {
             @page {
                 size: A4;
-                margin: 10mm;
+                margin: 8mm 10mm;
             }
 
             :root {
-                --primary-color: #1e2a38 !important; 
-                --secondary-color: #4682b4 !important; 
-                --accent-color: #4682b4 !important;
-                --text-color: #2c3e50 !important;
-                --text-light: #555 !important;
+                --primary-color: #0f172a !important; 
+                --secondary-color: #1e3a8a !important; 
+                --accent-color: #1d4ed8 !important;
+                --text-color: #1e293b !important;
+                --text-light: #475569 !important;
                 --bg-color: #fff !important; 
                 --container-bg: #fff !important;
-                --border-color: #e0e0e0 !important;
-                --header-border: #1e2a38 !important;
+                --border-color: #cbd5e1 !important;
+                --header-border: #0f172a !important;
             }
 
             body {
@@ -507,22 +443,17 @@
                 color: black !important;
                 margin: 0;
                 padding: 0;
-                zoom: 90%;
-                min-height: 0 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
+                zoom: 95%;
             }
 
             .cv-container { 
                 box-shadow: none !important; 
                 border: none !important; 
-                margin: 0 auto; 
                 width: 100%; 
                 max-width: 100%; 
                 padding: 0 !important; 
-                border-top: 2px solid #1e2a38 !important;
+                border-top: 3px solid #0f172a !important;
                 border-radius: 0 !important;
-                animation: none !important;
                 background: white !important;
             }
 
@@ -533,39 +464,22 @@
                 border: 1px solid #000 !important; 
                 background: none !important; 
                 box-shadow: none !important;
+                padding: 1px 4px !important;
             }
             
-            a { 
-                text-decoration: none !important; 
-                color: #000 !important; 
-            }
-            
-            .item, li, p, h2 { 
-                page-break-inside: avoid; 
-                break-inside: avoid; 
-                color: #000 !important;
-            }
-            
-            .item:hover,
-            li:hover,
-            .footer-btn:hover,
-            h2:hover,
-            .contact-info a:hover {
-                transform: none !important;
-                background-color: transparent !important;
+            .item {
+                background: none !important;
+                border-right: 2px solid #1e3a8a !important;
+                padding: 3px 8px !important;
             }
 
-            .print-break { 
-                page-break-before: always; 
-                break-before: page;
-                margin-top: 20px;
-                display: block;
+            .cv-en .item {
+                border-left: 2px solid #1e3a8a !important;
+                border-right: none !important;
             }
-            
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
+
+            a { text-decoration: none !important; color: #000 !important; }
+            .item, li, p, h2 { page-break-inside: avoid; break-inside: avoid; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -583,19 +497,15 @@
 
     <div class="cv-container">
         
+        <!-- Arabic Immersive Content -->
         <div id="cv-ar" class="cv-ar">
             <header>
                 <h1>أحمد محمد صلاح عامر</h1>
-                <span class="job-role">Civil Engineer | مهندس مدني</span>
+                <span class="job-role">مهندس مدني | Civil Engineer</span>
                 <div class="contact-info">
                     <span>الشرقية، مصر <i class="fas fa-map-marker-alt"></i></span>
                     <span dir="ltr">01012489813 <i class="fas fa-phone-alt"></i></span>
-                    
-                    <span>
-                        engahmedmohammed00@gmail.com 
-                        <i class="fas fa-envelope"></i>
-                    </span>
-
+                    <span>engahmedmohammed00@gmail.com <i class="fas fa-envelope"></i></span>
                     <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank" rel="noopener noreferrer">in/ahmedmohammed00 <i class="fab fa-linkedin"></i></a>
                 </div>
             </header>
@@ -603,12 +513,45 @@
             <div class="section">
                 <h2>الملخص المهني <i class="fas fa-user-tie"></i></h2>
                 <p>
-                    مهندس مدني (دفعة 2024 - جامعة الزقازيق) أمتلك أساساً قوياً في أصول التنفيذ وإدارة المواقع. اكتسبت خبرة ميدانية عملية من خلال التدريب في كبرى الشركات (المقاولون العرب)، مع التركيز على أعمال الخرسانات، وتطبيق إجراءات ضبط الجودة (QC)، واستلام البنود. أجيد استخدام AutoCAD وإعداد التقارير الفنية، ولغتي الإنجليزية ممتازة. أتميز بالقدرة على حل المشاكل داخل الموقع والالتزام بمعايير السلامة (HSE). أسعى للانضمام لفريق عمل كمهندس موقع وتنفيذ مشاريع بكفاءة عالية.
+                    مهندس مدني ذو خبرة في البنية التحتية ومشاريع شبكات المرافق ومحطات المياه ومعالجة الصرف الصحي. أجمع أيضاً بين مهارات المكتب الفني والمهارات الميدانية في استلام بنود التنفيذ والتشطيبات، وتصميم لوحات تفريد حديد التسليح بالشوب دروينج ASD، وحصر الكميات، وإعداد المقايسات والمستخلصات. متميز بالريادة التكنولوجية بدمج أدوات الذكاء الاصطناعي لتطوير الإنتاجية وأتمتة التقارير، ونظم تحليل البيانات التفاعلية (Power BI) لاتخاذ القرارات الهندسية الذكية.
                 </p>
             </div>
 
             <div class="section">
-                <h2>المؤهل الدراسي <i class="fas fa-graduation-cap"></i></h2>
+                <h2>الخبرة المهنية والعملية <i class="fas fa-briefcase"></i></h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">مهندس مرافق</span>
+                        <span class="date-badge">مارس 2026 - حتى الآن</span>
+                    </div>
+                    <div class="institution">إدارة المرافق بجهاز مدينة بدر - هيئة المجتمعات العمرانية الجديدة</div>
+                    <div class="details">
+                        <ul>
+                            <li>الإشراف المباشر على مشاريع تنفيذ أعمال مرافق شبكات مياه الشرب، الصرف الصحي، الري ومحطات المياه والصرف بالمدينة.</li>
+                            <li>مراجعة وتدقيق المستخلصات الختامية والجارية للمقاولين وحصر المنفذ على الطبيعة.</li>
+                            <li>إجراء وتدقيق الاختبارات القياسية للمواد والتأكد من مطابقة جميع الأعمال للمواصفات الفنية واشتراطات الكود المصري والسعودي (SBC).</li>
+                            <li>التنسيق الإداري والفني بين مقاولي التنفيذ وإدارة الجهاز لتسهيل تسليم الأعمال وحل التعارضات الفنية.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">تأدية الخدمة العسكرية</span>
+                        <span class="date-badge">يناير 2025 - مارس 2026</span>
+                    </div>
+                    <div class="institution">القوات المسلحة المصرية</div>
+                    <div class="details">
+                        <ul>
+                            <li>إنهاء الخدمة العسكرية بتقدير "قدوة حسنة" مع اكتساب مهارات القيادة، التخطيط اللوجستي، وإدارة الأفراد.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>المؤهل الدراسي والتدريب الجامعي <i class="fas fa-graduation-cap"></i></h2>
                 <div class="item">
                     <div class="item-header">
                         <span class="item-title">بكالوريوس الهندسة المدنية</span>
@@ -616,62 +559,60 @@
                     </div>
                     <div class="institution">جامعة الزقازيق</div>
                     <div class="details">
-                        <strong>مشروع التخرج:</strong> الهيدرولوجيا والموارد المائية (تقدير: <span class="grade-highlight">ممتاز</span>) <br>
+                        <strong>مشروع التخرج:</strong> الهيدرولوجيا والموارد المائية (تقدير: <span class="grade-highlight">ممتاز</span>) | 
                         <strong>التقدير العام:</strong> <span class="grade-highlight">جيد</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section">
-                <h2>التدريب العملي <i class="fas fa-briefcase"></i></h2>
-                <div class="item">
+                <div class="item" style="margin-top: 15px; border-right-color: var(--accent-light);">
                     <div class="item-header">
-                        <span class="item-title">المقاولون العرب</span>
-                        <span class="date-badge">مهندس موقع متدرب</span>
+                        <span class="item-title" style="font-size: 13px; font-weight: 700; color: var(--secondary-color);">التدريب الميداني أثناء فترة الدراسة</span>
+                        <span class="date-badge" style="background: var(--border-color); color: var(--primary-color); font-weight: 700;">المقاولون العرب & شركة القناة للكهرباء</span>
                     </div>
-                    <ul>
-                        <li>المساعدة في الإشراف على أعمال الخرسانة المسلحة.</li>
-                        <li>المشاركة في فحص الحديد والشدات الخشبية.</li>
-                        <li>حضور اختبارات جودة الخرسانة (Slump وعينات المكعبات).</li>
-                    </ul>
-                </div>
-
-                <div class="item print-break">
-                    <div class="item-header">
-                        <span class="item-title">شركة القناة لتوزيع الكهرباء</span>
-                        <span class="date-badge">مهندس موقع متدرب </span>
+                    <div class="details">
+                        <strong>أماكن التدريب والمشاريع:</strong> مول تجاري "99 مول" خلف المصرية بلازا، مشروع نفق عرابي للسيارات أسفل السكة الحديد بالزقازيق، ومباني شركة الكهرباء ومحولات الطاقة بالزقازيق.
                     </div>
-                    <ul>
-                        <li>المساعدة في أعمال التشطيبات المعمارية.</li>
-                        <li>دعم مهام حصر الكميات.</li>
-                        <li>التنسيق مع فرق الصيانة الكهربائية.</li>
-                    </ul>
                 </div>
             </div>
 
             <div class="section">
-                <h2>المهارات والدورات <i class="fas fa-tools"></i></h2>
-                <div class="grid-container">
-                    <div class="grid-col">
-                        <h3>المهارات التقنية واللغات</h3>
-                        <ul>
-                            <li>قراءة اللوحات الإنشائية.</li>
-                            <li>أساسيات المكتب الفني (حصر الكميات).</li>
-                            <li>AutoCAD (2D) & MS Office.</li>
-                            <li><strong>الإنجليزية:</strong> إتقان ممتاز (Excellent).</li>
+                <h2>الشهادات والبرامج والأدوات التكنولوجية <i class="fas fa-tools"></i></h2>
+                <div class="skills-grid">
+                    
+                    <div class="skills-card">
+                        <h3>الشهادات المهنية المعتمدة</h3>
+                        <ul style="padding-right:0px;">
+                            <li style="padding-right:0px;"><strong>دبلومة هندسة البنية التحتية:</strong> م/ وليد الجنيدي (شبكات مياه الشرب، الصرف، الري، الحريق، وتنسيق الموقع العام).</li>
+                            <li style="padding-right:0px;"><strong>سفراء الذكاء الاصطناعي (AI Ambassadors):</strong> NTRA & ESE (40 ساعة معتمدة في أدوات الـ AI وأتمتة التقارير وتحليل البيانات).</li>
+                            <li style="padding-right:0px;"><strong>دبلومة المكتب الفني الشاملة:</strong> م/ محمد ريحان (الشوب دروينج بالـ ASD، المقايسات BOQs، المستخلصات وفروق الأسعار).</li>
+                            <li style="padding-right:0px;"><strong>تنفيذ المنشآت والتشطيبات:</strong> د/ حسن قنديل (تنفيذ واستلام البنود الانشائية والتشطيبات).</li>
                         </ul>
                     </div>
-                    <div class="grid-col">
-                        <h3>الشهادات والدورات</h3>
-                        <ul>
-                            <li><strong>دورة تنفيذ المنشآت:</strong> د. حسن قنديل (شاملة التصميم).</li>
-                            <li><strong>دورة AutoCAD:</strong> رسم معماري ثنائي الأبعاد.</li>
+
+                    <div class="skills-card">
+                        <h3>البرامج والتطبيقات الهندسية والتكنولوجية</h3>
+                        <div class="tags-container">
+                            <span class="tag-pill">AutoCAD (2D)</span>
+                            <span class="tag-pill">ASD (Rebar Detailing)</span>
+                            <span class="tag-pill">MS Excel</span>
+                            <span class="tag-pill">Power BI</span>
+                            <span class="tag-pill">ChatGPT</span>
+                            <span class="tag-pill">Gemini</span>
+                            <span class="tag-pill">DeepSeek</span>
+                            <span class="tag-pill">MS Office</span>
+                        </div>
+                        <ul style="padding-right:0px; margin-top: 10px;">
+                            <li style="padding-right:0px;"><strong>المكتب الفني:</strong> حصر الكميات، المقايسات BOQ والمستخلصات.</li>
+                            <li style="padding-right:0px;"><strong>اللغة الإنجليزية:</strong> مستوى ممتاز</li>
+                            <li style="padding-right:0px;"><strong>المهارات الشخصية:</strong> مهارات قيادية متميزة والحل الهندسي لتعارضات الموقع.</li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
 
+        <!-- ENGLISH CV -->
         <div id="cv-en" class="cv-en">
             <header>
                 <h1>Ahmed Mohamed Salah Amer</h1>
@@ -679,25 +620,53 @@
                 <div class="contact-info">
                     <span><i class="fas fa-map-marker-alt"></i> Sharkia, Egypt</span>
                     <span><i class="fas fa-phone-alt"></i> +20 101 248 9813</span>
-                    
-                    <span>
-                        <i class="fas fa-envelope"></i> 
-                        engahmedmohammed00@gmail.com
-                    </span>
-
+                    <span><i class="fas fa-envelope"></i> engahmedmohammed00@gmail.com</span>
                     <a href="https://linkedin.com/in/ahmedmohammed00" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> in/ahmedmohammed00</a>
                 </div>
             </header>
 
             <div class="section">
-                <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
+                <h2>Professional Summary <i class="fas fa-user-tie"></i></h2>
                 <p>
-                    Results-oriented Civil Engineer (Class of 2024, Zagazig University) with a solid foundation in construction principles and site management. Gained hands-on experience through rigorous internships at top-tier firms like The Arab Contractors, focusing on concrete works, quality control (QC), and site inspections. Proficient in AutoCAD and technical reporting, with excellent command of English. I possess a proactive mindset towards problem-solving and ensuring site safety standards. Eager to launch my career as a Site Engineer, contributing to project efficiency and delivery excellence.
+                    Civil Engineer experienced in infrastructure, utility networks, water plants, and wastewater treatment systems. Combines technical office expertise with on-site field skills in executing structural and architectural finishing works, including rebar shop drawings using ASD, quantity surveying, BOQs, and invoicing. Highly innovative in integrating artificial intelligence tools to optimize productivity and automate reporting, and data analysis systems (Power BI) for smart engineering decision-making.
                 </p>
             </div>
 
             <div class="section">
-                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <h2>Professional Experience <i class="fas fa-briefcase"></i></h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Facilities Engineer</span>
+                        <span class="date-badge">March 2026 - Present</span>
+                    </div>
+                    <div class="institution">Badr City Development Authority - NUCA</div>
+                    <div class="details">
+                        <ul>
+                            <li>Directly supervising execution projects for drinking water, sewage, and irrigation utility networks, as well as water and wastewater treatment plants in the city.</li>
+                            <li>Reviewing and auditing contractors' ongoing and final financial invoices, and verifying actual field measurements on site.</li>
+                            <li>Performing standard quality testing and ensuring all execution complies strictly with technical specifications, Egyptian Code, and Saudi Building Code (SBC).</li>
+                            <li>Coordinating administratively and technically between contractors and the authority to facilitate handovers and resolve field engineering conflicts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Military Service</span>
+                        <span class="date-badge">Jan 2025 - March 2026</span>
+                    </div>
+                    <div class="institution">Egyptian Armed Forces</div>
+                    <div class="details">
+                        <ul>
+                            <li>Completed military duty with an "Exemplary Conduct Certificate," gaining valuable leadership, logistical planning, and team management skills.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Education & Academic Training <i class="fas fa-graduation-cap"></i></h2>
                 <div class="item">
                     <div class="item-header">
                         <span class="item-title">Bachelor of Civil Engineering</span>
@@ -705,58 +674,55 @@
                     </div>
                     <div class="institution">Zagazig University</div>
                     <div class="details">
-                        <strong>Graduation Project:</strong> Hydrology & Water Resources (Grade: <span class="grade-highlight">Excellent</span>) <br>
+                        <strong>Graduation Project:</strong> Hydrology & Water Resources (Grade: <span class="grade-highlight">Excellent</span>) | 
                         <strong>General Grade:</strong> <span class="grade-highlight">Good</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section">
-                <h2><i class="fas fa-briefcase"></i> Practical Training</h2>
-                <div class="item">
+                <div class="item" style="margin-top: 15px; border-left-color: var(--accent-light);">
                     <div class="item-header">
-                        <span class="item-title">Arab Contractors</span>
-                        <span class="date-badge">Site Engineer Trainee</span>
+                        <span class="item-title" style="font-size: 13px; font-weight: 700; color: var(--secondary-color);">Practical Field Training</span>
+                        <span class="date-badge" style="background: var(--border-color); color: var(--primary-color); font-weight: 700;">Arab Contractors & Canal Electricity</span>
                     </div>
-                    <ul>
-                        <li>Assisted in supervising reinforced concrete works.</li>
-                        <li>Participated in rebar and formwork inspections.</li>
-                        <li>Attended concrete quality tests.</li>
-                    </ul>
-                </div>
-
-                <div class="item print-break">
-                    <div class="item-header">
-                        <span class="item-title">Canal Electricity Distribution Company</span>
-                        <span class="date-badge">Site Engineer Trainee</span>
+                    <div class="details">
+                        <strong>Training Sites & Projects:</strong> Commercial "99 Mall" (behind Egyptian Plaza), Urabi Car Underpass project, Electricity Company buildings, and Power Transformer Substations in Zagazig.
                     </div>
-                    <ul>
-                        <li>Assisted in architectural finishing works.</li>
-                        <li>Supported quantity takeoff tasks.</li>
-                        <li>Coordinated with electrical maintenance teams.</li>
-                    </ul>
                 </div>
             </div>
 
             <div class="section">
-                <h2><i class="fas fa-tools"></i> Skills & Courses</h2>
-                <div class="grid-container">
-                    <div class="grid-col">
-                        <h3>Technical Skills & Languages</h3>
+                <h2>Certifications, Skills & Tech Tools <i class="fas fa-tools"></i></h2>
+                <div class="skills-grid">
+                    
+                    <div class="skills-card">
+                        <h3>Certified Credentials</h3>
                         <ul>
-                            <li>Reading construction drawings.</li>
-                            <li>Technical Office Basics (Quantity Surveying).</li>
-                            <li>AutoCAD (2D) & MS Office.</li>
-                            <li><strong>English:</strong> Excellent Proficiency.</li>
+                            <li><strong>Infrastructure Eng. Diploma:</strong> Eng. Walid El-Geneidy (Design of Water, Sewage, Fire, Irrigation networks, and general site layout coordination).</li>
+                            <li><strong>AI Ambassadors Program:</strong> NTRA & ESE (40 Hrs - Generative AI integration, workflow automation, Python basics, Power BI).</li>
+                            <li><strong>Comprehensive Technical Office:</strong> Eng. Mohamed Rehan (ASD Shop Drawing, BOQs, Invoicing, Claims, Bidding Law).</li>
+                            <li><strong>Site Execution & Finishings:</strong> Dr. Hassan Kandil (Execution and inspection of structural and finishing works).</li>
                         </ul>
                     </div>
-                    <div class="grid-col">
-                        <h3>Certifications</h3>
-                        <ul>
-                            <li><strong>Construction Execution Course:</strong> Dr. Hassan Kandil.</li>
-                            <li><strong>AutoCAD Course:</strong> 2D Drafting.</li>
+
+                    <div class="skills-card">
+                        <h3>Software & Engineering Tools</h3>
+                        <div class="tags-container">
+                            <span class="tag-pill">AutoCAD (2D)</span>
+                            <span class="tag-pill">ASD (Rebar Detailing)</span>
+                            <span class="tag-pill">MS Excel</span>
+                            <span class="tag-pill">Power BI</span>
+                            <span class="tag-pill">ChatGPT</span>
+                            <span class="tag-pill">Gemini</span>
+                            <span class="tag-pill">DeepSeek</span>
+                            <span class="tag-pill">MS Office</span>
+                        </div>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>Technical Office:</strong> Estimation, Quantity takeoff, BOQs and Invoicing.</li>
+                            <li><strong>Languages:</strong> Excellent proficiency in English (Written & Spoken).</li>
+                            <li><strong>Soft Skills:</strong> Strong leadership, disciplined teamwork, and site conflict resolution.</li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -777,10 +743,7 @@
         // PREVENT TRANSITION FLASH ON PAGE LOAD
         document.body.classList.add('no-transition');
 
-        // --- JavaScript Logic Fixed for Robustness ---
-        
         function setLanguage(lang) {
-            // Re-fetch elements inside function to ensure they exist
             const htmlTag = document.getElementById('main-html');
             const arDiv = document.getElementById('cv-ar');
             const enDiv = document.getElementById('cv-en');
@@ -789,10 +752,9 @@
             const txtBack = document.getElementById('txt-back');
             const controls = document.querySelector('.controls');
 
-            if (!arDiv || !enDiv) return; // Guard clause
+            if (!arDiv || !enDiv) return;
 
             if (lang === 'ar') {
-                // Switch to Arabic
                 arDiv.style.display = 'block';
                 enDiv.style.display = 'none';
                 htmlTag.setAttribute('dir', 'rtl');
@@ -805,7 +767,6 @@
                 if(txtBack) txtBack.innerText = "العودة للرئيسية";
                 localStorage.setItem('lang', 'ar');
             } else {
-                // Switch to English
                 arDiv.style.display = 'none';
                 enDiv.style.display = 'block';
                 htmlTag.setAttribute('dir', 'ltr');
@@ -843,7 +804,6 @@
 
         // --- INITIALIZATION ---
         window.addEventListener('load', () => {
-            // 1. Load Saved Theme
             const savedTheme = localStorage.getItem('theme');
             const icon = document.getElementById('theme-icon');
             if (savedTheme === 'dark') {
@@ -851,16 +811,13 @@
                 if(icon) icon.className = 'fas fa-sun';
             }
 
-            // 2. Load Saved Language
             const savedLang = localStorage.getItem('lang');
             if (savedLang) {
                 setLanguage(savedLang);
             } else {
-                // Default to Arabic if nothing saved
                 setLanguage('ar');
             }
             
-            // 3. Enable Transitions
             setTimeout(() => {
                 document.body.classList.remove('no-transition');
             }, 100);
